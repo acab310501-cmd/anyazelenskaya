@@ -91,7 +91,7 @@
       100% { opacity:0; transform:scale(1.05); }
     }
 
-    .hero { min-height:90vh; display:flex; align-items:center; padding:40px 0; }
+    .hero { min-height:90vh; display:flex; align-items:center; padding:60px 0; }
     .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; width:100%; }
     .hero-text h1 { font-size:72px; font-weight:800; letter-spacing:-2px; line-height:1.05; margin-bottom:8px; }
     .hero-text .subhead { font-size:22px; font-weight:400; color:var(--gray); margin-bottom:6px; }
@@ -106,17 +106,15 @@
     .hero-facts { margin-top:40px; display:flex; gap:40px; flex-wrap:wrap; }
     .hero-facts div { font-size:15px; color:var(--gray); font-weight:500; }
     .hero-facts div strong { display:block; font-size:22px; color:#1c1c1e; font-weight:700; }
-    .hero-image { display:flex; justify-content:center; }
-    .placeholder {
-      width:100%; max-width:500px; aspect-ratio:1/1.2; border-radius:40px;
-      background:linear-gradient(145deg, #eaeaf0, #d5d5df);
-      display:flex; align-items:center; justify-content:center;
-      font-size:80px; font-weight:300; color:#8e8e93; letter-spacing:6px;
+    .hero-image { display:flex; justify-content:center; align-items:center; }
+    .hero-image img {
+      width:100%; max-width:500px; aspect-ratio:1/1.2; border-radius:40px; object-fit:cover;
+      box-shadow:0 20px 40px rgba(0,0,0,0.06);
     }
-    body.dark .placeholder { background:linear-gradient(145deg, #2c2c2e, #1c1c1e); color:#555; }
 
-    #about { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
-    body.dark #about { background:#121213; }
+    /* ===== ОБО МНЕ (белый фон, убран серый) ===== */
+    #about { padding:80px 0; background:#fff; transition:background 0.3s; }
+    body.dark #about { background:#0a0a0b; }
     .about-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:center; }
     .about-text h2 { font-size:38px; font-weight:700; margin-bottom:16px; }
     .about-text p { font-size:17px; color:#3a3a3c; margin-bottom:16px; line-height:1.7; }
@@ -126,7 +124,7 @@
     .about-gallery {
       position: relative;
       width: 100%;
-      max-width: 460px;
+      max-width: 600px; /* увеличил */
       margin: 0 auto;
       border-radius: 40px;
       overflow: hidden;
@@ -138,7 +136,7 @@
     }
     .about-gallery .slide {
       min-width: 100%;
-      aspect-ratio: 1/1.1;
+      aspect-ratio: 1/1.2; /* увеличил высоту */
       background: linear-gradient(145deg, #d9d9e3, #c5c5d1);
       display: flex;
       align-items: center;
@@ -199,6 +197,7 @@
     body.dark .about-gallery .dot { background: rgba(255,255,255,0.3); }
     body.dark .about-gallery .dot.active { background: #34C759; }
 
+    /* Остальные блоки без изменений (сертификаты, преимущества, цены, этапы, отзывы, FAQ, форма) */
     #certificates { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #certificates { background:#121213; }
     .cert-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:30px; margin-top:30px; }
@@ -254,11 +253,9 @@
     .benefit-card h3 { font-size:20px; font-weight:700; margin-bottom:6px; }
     .benefit-card p { font-size:15px; color:var(--gray); }
 
-    /* ===== ЦЕНЫ (hover/касание) ===== */
     #pricing { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #pricing { background:#121213; }
     .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:24px; margin-top:30px; }
-
     .pricing-card {
       background:rgba(255,255,255,0.6);
       backdrop-filter:blur(12px);
@@ -286,7 +283,6 @@
     .pricing-card .price small { font-size:16px; font-weight:400; color:var(--gray); }
     .pricing-card .old-price { font-size:16px; color:#8e8e93; text-decoration:line-through; margin-right:8px; }
     .pricing-card .saving { font-size:14px; color:var(--green); font-weight:600; }
-
     .btn-outline {
       display:inline-block; margin-top:12px; padding:10px 28px; border-radius:40px;
       border:1px solid var(--green); color:var(--green); font-weight:600; background:transparent;
@@ -294,7 +290,6 @@
     }
     .btn-outline:hover { background:var(--green); color:#fff; }
 
-    /* Блок с деталями */
     .pricing-details {
       max-height: 0;
       overflow: hidden;
@@ -326,8 +321,6 @@
       background-size: 16px;
       margin-bottom: 2px;
     }
-
-    /* Показываем при наведении (десктоп) и при добавлении класса .expanded (мобильные/касание) */
     .pricing-card:hover .pricing-details,
     .pricing-card.expanded .pricing-details {
       max-height: 400px;
@@ -336,7 +329,6 @@
       padding-top: 16px;
     }
 
-    /* ===== ЭТАПЫ (аккордеон) ===== */
     #steps { padding:80px 0; }
     .steps-list { display:flex; flex-direction:column; gap:16px; max-width:700px; margin:30px auto 0; }
     .step-item {
@@ -396,7 +388,6 @@
     .step-desc strong { color:#1c1c1e; }
     body.dark .step-desc strong { color:#f5f5f7; }
 
-    /* ===== ОТЗЫВЫ ===== */
     #reviews { padding:80px 0; overflow:hidden; }
     .reviews-track { display:flex; gap:30px; transition:transform 0.5s ease; }
     .review-card {
@@ -415,7 +406,6 @@
     .reviews-nav button { background:none; border:1px solid #d1d1d6; border-radius:50%; width:48px; height:48px; font-size:22px; cursor:pointer; transition:all 0.2s; }
     .reviews-nav button:hover { border-color:var(--green); color:var(--green); }
 
-    /* ===== FAQ ===== */
     #faq { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #faq { background:#121213; }
     .faq-item { border-bottom:1px solid rgba(0,0,0,0.06); padding:16px 0; cursor:pointer; }
@@ -426,7 +416,6 @@
     .faq-item .faq-question span { transition:transform 0.3s; display:inline-block; }
     .faq-item.active .faq-question span { transform:rotate(180deg); }
 
-    /* ===== ФОРМА ===== */
     #booking { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #booking { background:#121213; }
     .form-wrapper { max-width:700px; margin:0 auto; background:#fff; border-radius:40px; padding:48px; box-shadow:0 12px 48px rgba(0,0,0,0.04); }
@@ -465,7 +454,6 @@
     .btn-submit:hover { background:#2db84e; }
     #formMessage { margin-top:20px; text-align:center; font-weight:600; }
 
-    /* ===== МОДАЛКИ ===== */
     .modal-overlay {
       position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5);
       backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center;
@@ -483,7 +471,6 @@
     .modal-content .btn-close:hover { background:#2db84e; }
     #confetti-canvas { position:fixed; inset:0; pointer-events:none; z-index:10000; }
 
-    /* ===== ПЛАВАЮЩИЕ КНОПКИ ===== */
     .floating-buttons {
       position:fixed; bottom:24px; right:24px; display:flex; flex-direction:column; gap:12px; z-index:999;
     }
@@ -498,7 +485,6 @@
     .floating-buttons a.whatsapp { background: #25D366; }
     .floating-buttons a svg { width:28px; height:28px; fill:#fff; display:block; }
 
-    /* ===== ПОДВАЛ ===== */
     footer { padding:40px 0; border-top:1px solid rgba(0,0,0,0.04); text-align:center; color:var(--gray); font-size:14px; }
     body.dark footer { border-top-color:rgba(255,255,255,0.05); }
     .footer-socials { display:flex; justify-content:center; gap:24px; margin-bottom:16px; font-size:18px; flex-wrap:wrap; }
@@ -561,7 +547,7 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO (главное фото справа) -->
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-text">
@@ -575,37 +561,27 @@
         <div><strong>Индивидуальный</strong> подход</div>
       </div>
     </div>
-  <div class="hero-image">
-  <img src="hero.jpg" alt="Аня Зеленская" style="width:100%; max-width:500px; aspect-ratio:1/1.2; border-radius:40px; object-fit:cover;" />
-</div>
-<!-- ОБО МНЕ -->
+    <div class="hero-image">
+      <img src="hero.jpg" alt="Аня Зеленская" />
+    </div>
+  </div>
+</section>
+
+<!-- ОБО МНЕ (белый фон) -->
 <section id="about">
   <div class="container about-grid">
     <div class="about-gallery" id="aboutGallery">
-  <div class="slides" id="aboutSlides">
-    <div class="slide">
-      <img src="1.jpg" alt="Аня в зале" style="width:100%; height:100%; object-fit:cover;" />
-    </div>
-    <div class="slide">
-      <img src="2.jpg" alt="Аня в шпагате" style="width:100%; height:100%; object-fit:cover;" />
-    </div>
-    <div class="slide">
-      <img src="3.jpg" alt="Аня с клиентом" style="width:100%; height:100%; object-fit:cover;" />
-    </div>
-    <div class="slide">
-      <img src="4.jpg" alt="Аня в движении" style="width:100%; height:100%; object-fit:cover;" />
-    </div>
-    <div class="slide">
-      <img src="5.jpg" alt="Аня в зале" style="width:100%; height:100%; object-fit:cover;" />
-    </div>
-    <div class="slide">
-      <img src="6.jpg" alt="Аня на тренировке" style="width:100%; height:100%; object-fit:cover;" />
-    </div>
-  </div>
-  <button class="gallery-btn prev" id="galleryPrev">‹</button>
-  <button class="gallery-btn next" id="galleryNext">›</button>
-  <div class="dots" id="galleryDots"></div>
-</div>
+      <div class="slides" id="aboutSlides">
+        <div class="slide"><img src="1.jpg" alt="Аня в зале" style="width:100%; height:100%; object-fit:cover;" /></div>
+        <div class="slide"><img src="2.jpg" alt="Аня на шпагате" style="width:100%; height:100%; object-fit:cover;" /></div>
+        <div class="slide"><img src="3.jpg" alt="Аня с клиентом" style="width:100%; height:100%; object-fit:cover;" /></div>
+        <div class="slide"><img src="4.jpg" alt="Аня в движении" style="width:100%; height:100%; object-fit:cover;" /></div>
+        <div class="slide"><img src="5.jpg" alt="Аня в зале" style="width:100%; height:100%; object-fit:cover;" /></div>
+        <div class="slide"><img src="6.jpg" alt="Аня на тренировке" style="width:100%; height:100%; object-fit:cover;" /></div>
+      </div>
+      <button class="gallery-btn prev" id="galleryPrev">‹</button>
+      <button class="gallery-btn next" id="galleryNext">›</button>
+      <div class="dots" id="galleryDots"></div>
     </div>
     <div class="about-text">
       <h2>Привет! Меня зовут Анна Зеленская.</h2>
@@ -618,7 +594,7 @@
   </div>
 </section>
 
-<!-- СЕРТИФИКАТЫ -->
+<!-- СЕРТИФИКАТЫ (оставляем, можно добавить свои картинки позже) -->
 <section id="certificates">
   <div class="container">
     <h2 style="font-size:38px; font-weight:700; text-align:center;">Мои сертификаты</h2>
@@ -896,14 +872,15 @@
 </section>
 
 <!-- ПОДВАЛ -->
+<!-- ПОДВАЛ -->
 <footer>
   <div class="container">
     <div class="footer-socials">
       <a href="https://www.instagram.com/a777kkk?igsh=MWoxNTJlZjAxbTY4aQ==" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://t.me/kkkkkssss111" target="_blank" rel="noopener noreferrer">Telegram</a>
       <a href="https://wa.me/79530979039" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <a href="#">+7 999 123-45-67</a>
-      <a href="#">Адрес клуба</a>
+      <a href="tel:+79530979039">+7 953 097 90 39</a>
+      <a href="https://2gis.ru/krasnodar/firm/3237490513252326" target="_blank" rel="noopener noreferrer">📍 Адрес клуба</a>
     </div>
     <p>© 2026 Аня Зеленская — Фитнес-тренер и нутрициолог</p>
   </div>
@@ -1142,7 +1119,6 @@
   document.querySelectorAll('.step-item').forEach(item => {
     const header = item.querySelector('.step-header');
     header.addEventListener('click', () => {
-      // Закрываем все остальные
       document.querySelectorAll('.step-item').forEach(other => {
         if (other !== item) other.classList.remove('active');
       });
@@ -1153,7 +1129,6 @@
   // ===== TOGGLE для карточек цен (на мобильных) =====
   document.querySelectorAll('.pricing-card[data-toggle]').forEach(card => {
     card.addEventListener('click', function(e) {
-      // Если кликнули по кнопке "Записаться", не переключаем
       if (e.target.closest('.btn-outline')) return;
       this.classList.toggle('expanded');
     });
