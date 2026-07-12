@@ -1271,65 +1271,76 @@
 
 form.addEventListener("submit", function (e) {
 
+
+// ======================================================
+// ОТПРАВКА ФОРМЫ
+// ======================================================
+
+form.addEventListener("submit", async function (e) {
+
     e.preventDefault();
 
-    // ------------------------------------------
-    // Получаем данные формы
-    // ------------------------------------------
+    // ---------- Получаем данные формы ----------
 
-    const name = document
-        .getElementById("name")
-        .value
-        .trim();
+    const name = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const telegram = document.getElementById("telegram").value.trim();
+    const comment = document.getElementById("comment").value.trim();
 
-    const phone = document
-        .getElementById("phone")
-        .value
-        .trim();
+    const packageValue =
+        document.querySelector('input[name="package"]:checked').parentElement.innerText;
 
-    const agree = document
-        .getElementById("agree")
-        .checked;
+    const agree = document.getElementById("agree").checked;
 
     const submitButton = form.querySelector(".btn-submit");
 
-    // ------------------------------------------
-    // Проверка заполнения формы
-    // ------------------------------------------
+    // ---------- Проверка ----------
 
     if (!name || !phone || !agree) {
 
-        document.getElementById("formMessage").innerHTML =
-            "⚠️ Пожалуйста, заполните обязательные поля и примите согласие на обработку данных.";
+        formMessage.textContent =
+            "⚠️ Пожалуйста, заполните обязательные поля.";
 
-        document.getElementById("formMessage").style.color =
-            "#ff3b30";
+        formMessage.style.color = "#ff3b30";
 
         return;
-
     }
 
-    // ------------------------------------------
-    // КРАСИВАЯ АНИМАЦИЯ КНОПКИ
-    // ------------------------------------------
+    // ---------- Анимация ----------
 
     submitButton.disabled = true;
+    submitButton.textContent = "⏳ Отправляем заявку...";
 
-    submitButton.innerHTML = "⏳ Отправляем заявку...";
+    try {
 
-    setTimeout(() => {
+        // ===========================================
+        // Здесь позже будет Telegram
+        // await sendToTelegram(...)
+        // ===========================================
 
-        submitButton.innerHTML = "✅ Заявка отправлена!";
+        await new Promise(resolve => setTimeout(resolve, 900));
 
         successModal.classList.add("active");
-
         launchConfetti();
-
-        document.getElementById("formMessage").innerHTML = "";
 
         form.reset();
 
-        // Возвращаем кнопку в исходное состояние
+        formMessage.textContent = "";
+
+        submitButton.textContent = "✅ Заявка отправлена!";
+
+    } finally {
+
+        setTimeout(() => {
+
+            submitButton.disabled = false;
+            submitButton.textContent = "Записаться";
+
+        }, 2500);
+
+    }
+
+});
 
         setTimeout(() => {
 
