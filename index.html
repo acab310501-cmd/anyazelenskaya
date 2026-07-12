@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Аня Зеленская — персональный тренер</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #fff;
+      color: #1c1c1e;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+    body.dark {
+      background: #0a0a0b;
+      color: #f5f5f7;
+    }
+    body.dark .benefit-card,
+    body.dark .review-card,
+    body.dark .step-item,
+    body.dark .pricing-card,
+    body.dark .certificate-card,
+    body.dark .tip-card {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.08);
+      color: #f5f5f7;
+    }
+    body.dark .form-wrapper { background: #1c1c1e; }
+    body.dark .form-group input,
+    body.dark .form-group select,
+    body.dark .form-group textarea { background: #2c2c2e; border-color: #3a3a3c; color: #fff; }
+    body.dark .radio-group label { background: #2c2c2e; border-color: #3a3a3c; color: #f5f5f7; }
+    body.dark .radio-group label:has(input:checked) { border-color: #34C759; background: #1e3a2a; }
+    body.dark .step-item .num { background: #34C759; color: #000; }
+    body.dark .hero-text .subhead { color: #aaa; }
+    body.dark .hero-text .tagline { color: #bbb; }
+    body.dark .hero-facts div { color: #aaa; }
+    body.dark .hero-facts div strong { color: #f5f5f7; }
+    body.dark .footer-socials a { color: #f5f5f7; }
+    body.dark .footer-socials a:hover { color: #34C759; }
+
+    .container { max-width:1200px; margin:0 auto; padding:0 24px; }
+    :root { --green:#34C759; --gray:#8e8e93; --light-bg:#f8f8fc; }
+
+    .theme-toggle {
+      background: none; border: none; font-size: 24px; cursor: pointer;
+      transition: transform 0.3s; padding: 0 8px;
+    }
+    .theme-toggle:hover { transform: rotate(20deg); }
+
+    header {
+      padding: 16px 0;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      position: sticky; top:0; z-index:100;
+      border-bottom:1px solid rgba(0,0,0,0.04);
+      transition: background 0.3s;
+    }
+    body.dark header { background: rgba(10,10,11,0.9); border-bottom-color: rgba(255,255,255,0.05); }
+    .header-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    .logo { font-size:26px; font-weight:800; letter-spacing:-0.5px; color:#1c1c1e; text-decoration:none; }
+    body.dark .logo { color:#f5f5f7; }
+    .logo span { color:var(--green); }
+    nav { display:flex; gap:24px; font-size:15px; font-weight:500; flex-wrap:wrap; }
+    nav a { text-decoration:none; color:#1c1c1e; transition:color 0.2s; position:relative; }
+    body.dark nav a { color:#f5f5f7; }
+    nav a::after { content:''; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:var(--green); transition:width 0.3s; }
+    nav a:hover { color:var(--green); }
+    nav a:hover::after { width:100%; }
+
+    #preloader {
+      position:fixed; inset:0; z-index:9999;
+      background:#000; display:flex; align-items:center; justify-content:center;
+      flex-direction:column; transition:opacity 1s ease;
+    }
+    #preloader.hidden { opacity:0; pointer-events:none; }
+    #preloader p {
+      color:#fff; font-size:28px; font-weight:300; letter-spacing:2px;
+      opacity:0; animation: fadeInOut 3s ease forwards;
+    }
+    @keyframes fadeInOut {
+      0% { opacity:0; transform:scale(0.95); }
+      30% { opacity:1; transform:scale(1); }
+      70% { opacity:1; }
+      100% { opacity:0; transform:scale(1.05); }
+    }
+
+    .hero { min-height:90vh; display:flex; align-items:center; padding:40px 0; }
+    .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; width:100%; }
+    .hero-text h1 { font-size:72px; font-weight:800; letter-spacing:-2px; line-height:1.05; margin-bottom:8px; }
+    .hero-text .subhead { font-size:22px; font-weight:400; color:var(--gray); margin-bottom:6px; }
+    .hero-text .tagline { font-size:20px; font-weight:300; color:#3a3a3c; margin-bottom:32px; max-width:480px; }
+    .btn-primary {
+      display:inline-block; background:var(--green); color:#fff;
+      padding:16px 48px; border-radius:60px; font-weight:600; font-size:18px;
+      text-decoration:none; transition:background 0.2s, transform 0.1s, box-shadow 0.3s;
+      border:none; cursor:pointer; box-shadow:0 8px 24px rgba(52,199,89,0.25);
+    }
+    .btn-primary:hover { background:#2db84e; transform:scale(1.02); box-shadow:0 12px 32px rgba(52,199,89,0.4); }
+    .hero-facts { margin-top:40px; display:flex; gap:40px; flex-wrap:wrap; }
+    .hero-facts div { font-size:15px; color:var(--gray); font-weight:500; }
+    .hero-facts div strong { display:block; font-size:22px; color:#1c1c1e; font-weight:700; }
+    .hero-image { display:flex; justify-content:center; }
+    .placeholder {
+      width:100%; max-width:500px; aspect-ratio:1/1.2; border-radius:40px;
+      background:linear-gradient(145deg, #eaeaf0, #d5d5df);
+      display:flex; align-items:center; justify-content:center;
+      font-size:80px; font-weight:300; color:#8e8e93; letter-spacing:6px;
+    }
+    body.dark .placeholder { background:linear-gradient(145deg, #2c2c2e, #1c1c1e); color:#555; }
+
+    #about { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
+    body.dark #about { background:#121213; }
+    .about-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:center; }
+    .about-text h2 { font-size:38px; font-weight:700; margin-bottom:16px; }
+    .about-text p { font-size:17px; color:#3a3a3c; margin-bottom:16px; line-height:1.7; }
+    body.dark .about-text p { color:#ccc; }
+    .about-text .highlight { color:var(--green); font-weight:600; }
+
+    .about-gallery {
+      position: relative;
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+    .about-gallery .slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .about-gallery .slide {
+      min-width: 100%;
+      aspect-ratio: 1/1.1;
+      background: linear-gradient(145deg, #d9d9e3, #c5c5d1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 600;
+      color: #8e8e93;
+      letter-spacing: 2px;
+    }
+    .about-gallery .slide img {
+      width:100%; height:100%; object-fit:cover;
+    }
+    body.dark .about-gallery .slide { background: #2c2c2e; color: #666; }
+    .about-gallery .gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(4px);
+      border: none;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #1c1c1e;
+      transition: background 0.2s, transform 0.2s;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .about-gallery .gallery-btn:hover { background: #fff; transform: translateY(-50%) scale(1.05); }
+    .about-gallery .gallery-btn.prev { left: 12px; }
+    .about-gallery .gallery-btn.next { right: 12px; }
+    .about-gallery .dots {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 2;
+    }
+    .about-gallery .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .about-gallery .dot.active {
+      background: #fff;
+      transform: scale(1.2);
+    }
+    body.dark .about-gallery .gallery-btn { background: rgba(30,30,32,0.7); color: #f5f5f7; }
+    body.dark .about-gallery .gallery-btn:hover { background: #1c1c1e; }
+    body.dark .about-gallery .dot { background: rgba(255,255,255,0.3); }
+    body.dark .about-gallery .dot.active { background: #34C759; }
+
+    #certificates { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
+    body.dark #certificates { background:#121213; }
+    .cert-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:30px; margin-top:30px; }
+    .certificate-card {
+      background:#fff; border-radius:28px; padding:28px 20px; text-align:center;
+      box-shadow:0 8px 24px rgba(0,0,0,0.04); border:1px solid rgba(0,0,0,0.02);
+      transition:transform 0.3s, box-shadow 0.3s;
+    }
+    .certificate-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,0.06); }
+    .certificate-card .icon { font-size:56px; margin-bottom:12px; display:block; }
+    .certificate-card h3 { font-size:18px; font-weight:700; }
+    .certificate-card p { font-size:14px; color:var(--gray); }
+
+    #tips { padding:80px 0; background:#fff; transition:background 0.3s; }
+    body.dark #tips { background:#0a0a0b; }
+    .tip-wrapper {
+      max-width:700px; margin:0 auto; text-align:center;
+      background:rgba(255,255,255,0.4); backdrop-filter:blur(12px); border-radius:40px;
+      padding:40px 32px; border:1px solid rgba(255,255,255,0.3);
+      box-shadow:0 12px 40px rgba(0,0,0,0.04);
+      transition:background 0.3s;
+    }
+    body.dark .tip-wrapper { background:rgba(255,255,255,0.05); border-color:rgba(255,255,255,0.05); }
+    .tip-wrapper .label { font-size:14px; font-weight:600; color:var(--green); text-transform:uppercase; letter-spacing:1px; }
+    .tip-wrapper .tip-text {
+      font-size:24px; font-weight:400; line-height:1.5; margin:20px 0; min-height:100px;
+      display:flex; align-items:center; justify-content:center;
+      transition:opacity 0.5s ease, transform 0.5s ease;
+    }
+    .tip-wrapper .tip-text.fade { opacity:0; transform:translateY(10px); }
+    .tip-wrapper .tip-text.show { opacity:1; transform:translateY(0); }
+    .tip-controls { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .tip-controls button {
+      background:var(--green); color:#fff; border:none; padding:12px 32px;
+      border-radius:40px; font-weight:600; cursor:pointer; transition:background 0.2s, transform 0.1s;
+    }
+    .tip-controls button:hover { background:#2db84e; transform:scale(1.02); }
+    .tip-controls .secondary {
+      background:transparent; border:1px solid var(--green); color:var(--green);
+    }
+    .tip-controls .secondary:hover { background:var(--green); color:#fff; }
+    .tip-counter { font-size:14px; color:var(--gray); margin-top:16px; }
+
+    #benefits { padding:80px 0; }
+    .benefits-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:30px; margin-top:20px; }
+    .benefit-card {
+      background:#fff; border-radius:28px; padding:32px 24px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.04); border:1px solid rgba(0,0,0,0.02);
+      text-align:center; transition:transform 0.25s, box-shadow 0.25s;
+    }
+    .benefit-card:hover { transform:translateY(-8px); box-shadow:0 16px 48px rgba(0,0,0,0.06); }
+    .benefit-card .icon { font-size:40px; margin-bottom:12px; display:block; }
+    .benefit-card h3 { font-size:20px; font-weight:700; margin-bottom:6px; }
+    .benefit-card p { font-size:15px; color:var(--gray); }
+
+    #pricing { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
+    body.dark #pricing { background:#121213; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:24px; margin-top:30px; }
+
+    .pricing-card {
+      background:rgba(255,255,255,0.6);
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      border-radius:32px;
+      padding:28px 20px 20px;
+      border:1px solid rgba(255,255,255,0.5);
+      box-shadow:0 8px 32px rgba(0,0,0,0.04);
+      text-align:center;
+      transition:transform 0.3s, box-shadow 0.3s;
+      position:relative;
+      cursor:default;
+    }
+    .pricing-card:hover { transform:translateY(-6px); box-shadow:0 16px 48px rgba(0,0,0,0.08); }
+    .pricing-card.popular { background:rgba(52,199,89,0.08); border:2px solid var(--green); transform:scale(1.02); }
+    .pricing-card.popular::before {
+      content:'★ САМЫЙ ПОПУЛЯРНЫЙ';
+      position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+      background:var(--green); color:#fff; font-size:12px; font-weight:700;
+      padding:4px 18px; border-radius:40px; letter-spacing:0.5px;
+      white-space:nowrap;
+    }
+    .pricing-card .badge { font-size:13px; font-weight:600; color:var(--green); background:rgba(52,199,89,0.12); padding:4px 16px; border-radius:40px; display:inline-block; margin-bottom:12px; }
+    .pricing-card .price { font-size:30px; font-weight:800; margin:8px 0; }
+    .pricing-card .price small { font-size:16px; font-weight:400; color:var(--gray); }
+    .pricing-card .old-price { font-size:16px; color:#8e8e93; text-decoration:line-through; margin-right:8px; }
+    .pricing-card .saving { font-size:14px; color:var(--green); font-weight:600; }
+
+    .btn-outline {
+      display:inline-block; margin-top:12px; padding:10px 28px; border-radius:40px;
+      border:1px solid var(--green); color:var(--green); font-weight:600; background:transparent;
+      transition:background 0.2s, color 0.2s; cursor:pointer; text-decoration:none;
+    }
+    .btn-outline:hover { background:var(--green); color:#fff; }
+
+    .pricing-details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.3s;
+      margin-top: 0;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #3a3a3c;
+      border-top: 1px solid rgba(0,0,0,0.05);
+      padding: 0 4px;
+    }
+    body.dark .pricing-details { color: #ccc; border-top-color: rgba(255,255,255,0.05); }
+    .pricing-details ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 0;
+    }
+    .pricing-details ul li {
+      padding: 4px 0 4px 24px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%2334C759" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') left center no-repeat;
+      background-size: 16px;
+      margin-bottom: 2px;
+    }
+
+    .pricing-card:hover .pricing-details,
+    .pricing-card.expanded .pricing-details {
+      max-height: 400px;
+      opacity: 1;
+      margin-top: 16px;
+      padding-top: 16px;
+    }
+
+    .btn-flip {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 20px;
+      border-radius: 40px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 12px rgba(52,199,89,0.25);
+    }
+    .btn-flip:hover { background:#2db84e; transform:scale(1.03); }
+
+    #steps { padding:80px 0; }
+    .steps-list { display:flex; flex-direction:column; gap:16px; max-width:600px; margin:30px auto 0; }
+    .step-item {
+      display:flex; align-items:center; gap:24px; padding:16px 24px;
+      background:#fff; border-radius:60px; box-shadow:0 4px 16px rgba(0,0,0,0.03);
+      border:1px solid rgba(0,0,0,0.02); font-size:18px; font-weight:500;
+    }
+    body.dark .step-item { background:#1c1c1e; border-color:#2c2c2e; }
+    .step-item .num { background:var(--green); color:#fff; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; }
+    .step-item .arrow { margin-left:auto; color:var(--gray); }
+
+    #reviews { padding:80px 0; overflow:hidden; }
+    .reviews-track { display:flex; gap:30px; transition:transform 0.5s ease; }
+    .review-card {
+      min-width:300px; background:#fff; border-radius:28px; padding:28px 24px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.04); border:1px solid rgba(0,0,0,0.02);
+      flex-shrink:0;
+    }
+    body.dark .review-card { background:#1c1c1e; border-color:#2c2c2e; }
+    .review-card .stars { color:#f5b342; font-size:20px; letter-spacing:2px; margin-bottom:8px; }
+    .review-card p { font-size:16px; color:#3a3a3c; margin-bottom:8px; }
+    body.dark .review-card p { color:#ccc; }
+    .review-card .author { font-weight:600; color:#1c1c1e; }
+    body.dark .review-card .author { color:#f5f5f7; }
+    .reviews-wrapper { position:relative; overflow:hidden; }
+    .reviews-nav { display:flex; justify-content:center; gap:20px; margin-top:30px; }
+    .reviews-nav button { background:none; border:1px solid #d1d1d6; border-radius:50%; width:48px; height:48px; font-size:22px; cursor:pointer; transition:all 0.2s; }
+    .reviews-nav button:hover { border-color:var(--green); color:var(--green); }
+
+    #faq { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
+    body.dark #faq { background:#121213; }
+    .faq-item { border-bottom:1px solid rgba(0,0,0,0.06); padding:16px 0; cursor:pointer; }
+    body.dark .faq-item { border-bottom-color:rgba(255,255,255,0.06); }
+    .faq-question { font-size:18px; font-weight:600; display:flex; justify-content:space-between; align-items:center; }
+    .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.3s; padding:0 0 0 0; color:var(--gray); }
+    .faq-item.active .faq-answer { max-height:200px; padding:12px 0 6px; }
+    .faq-item .faq-question span { transition:transform 0.3s; display:inline-block; }
+    .faq-item.active .faq-question span { transform:rotate(180deg); }
+
+    #booking { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
+    body.dark #booking { background:#121213; }
+    .form-wrapper { max-width:700px; margin:0 auto; background:#fff; border-radius:40px; padding:48px; box-shadow:0 12px 48px rgba(0,0,0,0.04); }
+    body.dark .form-wrapper { background:#1c1c1e; }
+    .form-group { margin-bottom:24px; }
+    .form-group label { display:block; font-weight:600; font-size:15px; margin-bottom:6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width:100%; padding:14px 18px; border-radius:16px; border:1px solid #d1d1d6;
+      font-size:16px; font-family:inherit; background:#f8f8fc; transition:border-color 0.2s; outline:none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--green); background:#fff; }
+    .form-group textarea { resize:vertical; min-height:80px; }
+    .radio-group { display:flex; flex-wrap:wrap; gap:12px; margin-top:6px; }
+    .radio-group label {
+      display:flex; align-items:center; gap:8px; font-weight:400; font-size:15px;
+      background:#f8f8fc; padding:8px 18px; border-radius:40px; border:1px solid #d1d1d6;
+      cursor:pointer; transition:background 0.2s, border-color 0.2s;
+    }
+    .radio-group label:hover { background:#eef6ef; }
+    .radio-group input[type="radio"] { accent-color:var(--green); width:18px; height:18px; }
+    .radio-group label:has(input:checked) { border-color:var(--green); background:#eef6ef; }
+    .checkbox-group {
+      display:flex; align-items:center; gap:12px; font-size:15px; flex-wrap:wrap;
+    }
+    .checkbox-group input { width:20px; height:20px; accent-color:var(--green); }
+    .checkbox-group .policy-link {
+      font-size:13px; color:var(--green); cursor:pointer; text-decoration:underline;
+      background:none; border:none; padding:0; font-family:inherit;
+    }
+    .checkbox-group .policy-link:hover { color:#2db84e; }
+    .btn-submit {
+      width:100%; padding:16px; background:var(--green); color:#fff; border:none;
+      border-radius:60px; font-size:18px; font-weight:600; cursor:pointer;
+      transition:background 0.2s; box-shadow:0 8px 24px rgba(52,199,89,0.25);
+    }
+    .btn-submit:hover { background:#2db84e; }
+    #formMessage { margin-top:20px; text-align:center; font-weight:600; }
+
+    .modal-overlay {
+      position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center;
+    }
+    .modal-overlay.active { display:flex; }
+    .modal-content {
+      background:#fff; border-radius:40px; padding:48px 40px; max-width:520px; width:90%;
+      text-align:center; position:relative; box-shadow:0 32px 64px rgba(0,0,0,0.2);
+      max-height:90vh; overflow-y:auto;
+    }
+    body.dark .modal-content { background:#1c1c1e; }
+    .modal-content h2 { font-size:28px; margin-bottom:8px; }
+    .modal-content p { color:var(--gray); margin-bottom:20px; text-align:left; font-size:15px; line-height:1.7; }
+    .modal-content .btn-close { background:var(--green); color:#fff; border:none; padding:12px 40px; border-radius:60px; font-weight:600; cursor:pointer; transition:background 0.2s; }
+    .modal-content .btn-close:hover { background:#2db84e; }
+    #confetti-canvas { position:fixed; inset:0; pointer-events:none; z-index:10000; }
+
+    .floating-buttons {
+      position:fixed; bottom:24px; right:24px; display:flex; flex-direction:column; gap:12px; z-index:999;
+    }
+    .floating-buttons a {
+      width:56px; height:56px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      text-decoration:none; box-shadow:0 8px 24px rgba(0,0,0,0.15);
+      transition:transform 0.2s, box-shadow 0.2s;
+    }
+    .floating-buttons a:hover { transform:scale(1.1); box-shadow:0 12px 32px rgba(0,0,0,0.2); }
+    .floating-buttons a.telegram { background: #0088cc; }
+    .floating-buttons a.whatsapp { background: #25D366; }
+    .floating-buttons a svg { width:28px; height:28px; fill:#fff; display:block; }
+
+    footer { padding:40px 0; border-top:1px solid rgba(0,0,0,0.04); text-align:center; color:var(--gray); font-size:14px; }
+    body.dark footer { border-top-color:rgba(255,255,255,0.05); }
+    .footer-socials { display:flex; justify-content:center; gap:24px; margin-bottom:16px; font-size:18px; flex-wrap:wrap; }
+    .footer-socials a { color:#1c1c1e; text-decoration:none; font-weight:500; transition:color 0.2s; }
+    body.dark .footer-socials a { color:#f5f5f7; }
+    .footer-socials a:hover { color:var(--green); }
+
+    .animate-on-scroll { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
+    .animate-on-scroll.visible { opacity:1; transform:translateY(0); }
+
+    @media (max-width:992px) {
+      .hero-grid { grid-template-columns:1fr; text-align:center; }
+      .hero-text h1 { font-size:48px; }
+      .hero-facts { justify-content:center; }
+      .about-grid { grid-template-columns:1fr; text-align:center; }
+      .about-gallery { max-width:400px; }
+      .benefits-grid { grid-template-columns:repeat(2,1fr); }
+      .pricing-grid { grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); }
+    }
+    @media (max-width:600px) {
+      .hero-text h1 { font-size:36px; }
+      .pricing-grid { grid-template-columns:1fr; }
+      .benefits-grid { grid-template-columns:1fr; }
+      .form-wrapper { padding:24px; }
+      .header-inner { flex-direction:column; gap:8px; }
+      nav { gap:14px; font-size:14px; justify-content:center; }
+      .hero-facts { flex-direction:column; gap:12px; }
+      .step-item { font-size:15px; padding:12px 16px; }
+      .floating-buttons { bottom:16px; right:16px; }
+      .floating-buttons a { width:48px; height:48px; }
+      .floating-buttons a svg { width:24px; height:24px; }
+      .about-gallery .gallery-btn { width:36px; height:36px; font-size:18px; }
+      .pricing-card.popular { transform:scale(1); }
+      .tip-wrapper .tip-text { font-size:20px; min-height:80px; }
+      .tip-controls button { padding:10px 20px; font-size:14px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ПРЕЛОАДЕР -->
+<div id="preloader"><p>Сильное тело начинается с правильного решения.</p></div>
+
+<!-- ШАПКА -->
+<header>
+  <div class="container header-inner">
+    <a href="#" class="logo">Аня<span>Зеленская</span></a>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <nav>
+        <a href="#about">Обо мне</a>
+        <a href="#certificates">Сертификаты</a>
+        <a href="#pricing">Услуги</a>
+        <a href="#tips">Советы</a>
+        <a href="#booking">Запись</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">🌙</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <h1>АНЯ ЗЕЛЕНСКАЯ</h1>
+      <div class="subhead">Сертифицированный фитнес-тренер • Нутрициолог</div>
+      <p class="tagline">Построим тело, в котором ты будешь чувствовать себя уверенно.</p>
+      <a href="#booking" class="btn-primary">Записаться на тренировку</a>
+      <div class="hero-facts">
+        <div><strong class="count-up" data-target="10">0</strong>+ лет в спорте</div>
+        <div><strong>Fit Standard</strong> Certified</div>
+        <div><strong>Индивидуальный</strong> подход</div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="placeholder">АЗ</div>
+    </div>
+  </div>
+</section>
+
+<!-- ОБО МНЕ -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-gallery" id="aboutGallery">
+      <div class="slides" id="aboutSlides">
+        <div class="slide"><img src="images/about-1.jpg" alt="Аня в зале" style="width:100%; height:100%; object-fit:cover;" /></div>
+        <div class="slide"><img src="images/about-2.jpg" alt="Аня на шпагате" style="width:100%; height:100%; object-fit:cover;" /></div>
+        <div class="slide"><img src="images/about-3.jpg" alt="Аня с клиентом" style="width:100%; height:100%; object-fit:cover;" /></div>
+        <div class="slide"><img src="images/about-4.jpg" alt="Аня в движении" style="width:100%; height:100%; object-fit:cover;" /></div>
+      </div>
+      <button class="gallery-btn prev" id="galleryPrev">‹</button>
+      <button class="gallery-btn next" id="galleryNext">›</button>
+      <div class="dots" id="galleryDots"></div>
+    </div>
+    <div class="about-text">
+      <h2>Привет! Меня зовут Анна Зеленская.</h2>
+      <p>Спорт — это не просто моя профессия. Это образ жизни, который сопровождает меня уже более десяти лет. За это время я попробовала себя в самых разных направлениях: волейбол, баскетбол, бег, функциональные тренировки. Но именно силовой тренинг стал тем, что полностью изменило мою жизнь.</p>
+      <p>С 18 лет я регулярно занимаюсь в тренажерном зале, долгое время тренировалась под руководством профессионального тренера, изучала биомеханику упражнений, питание и восстановление. Благодаря системному подходу мне удалось построить <span class="highlight">тело своей мечты</span>, сохранив женственность, здоровье и отличную физическую форму.</p>
+      <p>Особое внимание я уделяю развитию мобильности и гибкости. Свободно выполняю шпагат и упражнения на глубокую растяжку, поэтому помогаю своим клиентам не только становиться сильнее, но и двигаться легко, красиво и без боли.</p>
+      <p>Я окончила фитнес-школу <span class="highlight">Fit Standard</span>, являюсь сертифицированным фитнес-тренером и нутрициологом. Для каждого клиента я составляю персональную программу тренировок и питания, которая помогает достигать результата без жестких ограничений и бесконечных диет.</p>
+      <p>Моя цель — не просто провести тренировку. Я хочу научить тебя получать удовольствие от спорта и создать тело, которым ты действительно будешь гордиться.</p>
+    </div>
+  </div>
+</section>
+
+<!-- СЕРТИФИКАТЫ -->
+<section id="certificates">
+  <div class="container">
+    <h2 style="font-size:38px; font-weight:700; text-align:center;">Мои сертификаты</h2>
+    <div class="cert-grid">
+      <div class="certificate-card animate-on-scroll">
+        <span class="icon">📜</span>
+        <h3>Fit Standard</h3>
+        <p>Сертифицированный фитнес-тренер</p>
+      </div>
+      <div class="certificate-card animate-on-scroll">
+        <span class="icon">🥗</span>
+        <h3>Нутрициолог</h3>
+        <p>Диплом по спортивному питанию</p>
+      </div>
+      <div class="certificate-card animate-on-scroll">
+        <span class="icon">🏅</span>
+        <h3>Мастер-тренер</h3>
+        <p>Повышение квалификации, 2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПРЕИМУЩЕСТВА -->
+<section id="benefits">
+  <div class="container">
+    <h2 style="font-size:38px; font-weight:700; text-align:center;">Почему именно я</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card animate-on-scroll"><span class="icon">🏋️</span><h3>10+ лет опыта</h3><p>в спорте и фитнесе</p></div>
+      <div class="benefit-card animate-on-scroll"><span class="icon">🥗</span><h3>Персональное питание</h3><p>Без голодовок и ограничений</p></div>
+      <div class="benefit-card animate-on-scroll"><span class="icon">💪</span><h3>Индивидуальные тренировки</h3><p>Под любые цели</p></div>
+      <div class="benefit-card animate-on-scroll"><span class="icon">❤️</span><h3>Поддержка 24/7</h3><p>Всегда на связи с клиентами</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ЦЕНЫ -->
+<section id="pricing">
+  <div class="container">
+    <h2 style="font-size:38px; font-weight:700; text-align:center;">Стоимость</h2>
+    <div class="pricing-grid">
+      <!-- Ознакомительная -->
+      <div class="pricing-card animate-on-scroll">
+        <div class="badge">Ознакомительная</div>
+        <div class="price">3 000 ₽</div>
+        <div style="font-size:14px;color:var(--gray);">1 тренировка</div>
+        <div class="pricing-details">
+          <ul>
+            <li>Знакомство с тренажёрами и базовыми упражнениями</li>
+            <li>Составление персонального плана питания на день</li>
+            <li>Постановка правильной техники выполнения</li>
+            <li>Оценка текущего уровня физической подготовки</li>
+            <li>Рекомендации по режиму и восстановлению</li>
+          </ul>
+        </div>
+        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
+        <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
+      </div>
+
+      <!-- 5 тренировок -->
+      <div class="pricing-card animate-on-scroll">
+        <div class="badge">Старт</div>
+        <div class="price">10 000 ₽</div>
+        <div style="font-size:14px;color:var(--gray);">5 тренировок (2000 ₽/занятие)</div>
+        <div class="pricing-details">
+          <ul>
+            <li>Персональный план питания на неделю с учётом целей</li>
+            <li>Обучение базовым и изолирующим упражнениям</li>
+            <li>Постановка техники под контролем тренера</li>
+            <li>Корректировка программы по ходу занятий</li>
+            <li>Мотивационная поддержка и контроль прогресса</li>
+          </ul>
+        </div>
+        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
+        <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
+      </div>
+
+      <!-- 10 тренировок -->
+      <div class="pricing-card animate-on-scroll">
+        <div class="badge">−10%</div>
+        <div class="price">18 000 ₽</div>
+        <div style="font-size:14px;color:var(--gray);">10 тренировок</div>
+        <div><span class="old-price">20 000 ₽</span> <span class="saving">экономия 2 000 ₽</span></div>
+        <div class="pricing-details">
+          <ul>
+            <li>Внедрение полезных привычек в повседневную жизнь</li>
+            <li>Детальная проработка всех мышечных групп</li>
+            <li>Корректировка питания на основе динамики веса и объёмов</li>
+            <li>Обучение самостоятельному составлению рациона</li>
+            <li>Устойчивый прогресс в силе и выносливости</li>
+          </ul>
+        </div>
+        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
+        <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
+      </div>
+
+      <!-- 15 тренировок -->
+      <div class="pricing-card animate-on-scroll">
+        <div class="badge">−10%</div>
+        <div class="price">27 000 ₽</div>
+        <div style="font-size:14px;color:var(--gray);">15 тренировок</div>
+        <div><span class="old-price">30 000 ₽</span> <span class="saving">экономия 3 000 ₽</span></div>
+        <div class="pricing-details">
+          <ul>
+            <li>Закрепление навыков правильного выполнения упражнений</li>
+            <li>Работа над слабыми зонами и коррекция осанки</li>
+            <li>Глубокая проработка гибкости и подвижности суставов</li>
+            <li>Полноценное меню на месяц с учётом предпочтений</li>
+            <li>Постоянная обратная связь и адаптация плана</li>
+          </ul>
+        </div>
+        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
+        <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
+      </div>
+
+      <!-- 20 тренировок (популярный) -->
+      <div class="pricing-card popular animate-on-scroll">
+        <div class="badge">−15%</div>
+        <div class="price">34 000 ₽</div>
+        <div style="font-size:14px;color:var(--gray);">20 тренировок</div>
+        <div><span class="old-price">40 000 ₽</span> <span class="saving">экономия 6 000 ₽</span></div>
+        <div class="pricing-details">
+          <ul>
+            <li>Гарантированный результат при соблюдении рекомендаций</li>
+            <li>Полная трансформация тела: жиросжигание + рельеф</li>
+            <li>Индивидуальный подход к каждой тренировке</li>
+            <li>Психологическая поддержка и формирование здоровых привычек</li>
+            <li>Пожизненный доступ к программе и консультации после курса</li>
+          </ul>
+        </div>
+        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
+        <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- СОВЕТЫ -->
+<section id="tips">
+  <div class="container">
+    <h2 style="font-size:38px; font-weight:700; text-align:center;">Совет от Анны</h2>
+    <div class="tip-wrapper">
+      <div class="label">✨ ЗНАНИЕ — СИЛА</div>
+      <div class="tip-text show" id="tipText">Начинайте утро со стакана воды — это запускает метаболизм и очищает организм.</div>
+      <div class="tip-controls">
+        <button class="secondary" id="prevTip">◀ Предыдущий</button>
+        <button id="nextTip">Следующий совет ▶</button>
+      </div>
+      <div class="tip-counter" id="tipCounter">1 / 50</div>
+    </div>
+  </div>
+</section>
+
+<!-- ЭТАПЫ -->
+<section id="steps">
+  <div class="container">
+    <h2 style="font-size:38px; font-weight:700; text-align:center;">Как проходят тренировки</h2>
+    <div class="steps-list">
+      <div class="step-item animate-on-scroll"><span class="num">1</span> Диагностика <span class="arrow">↓</span></div>
+      <div class="step-item animate-on-scroll"><span class="num">2</span> Постановка цели <span class="arrow">↓</span></div>
+      <div class="step-item animate-on-scroll"><span class="num">3</span> План питания <span class="arrow">↓</span></div>
+      <div class="step-item animate-on-scroll"><span class="num">4</span> Тренировочная программа <span class="arrow">↓</span></div>
+      <div class="step-item animate-on-scroll"><span class="num">5</span> Контроль результата</div>
+    </div>
+  </div>
+</section>
+
+<!-- ОТЗЫВЫ -->
+<section id="reviews">
+  <div class="container">
+    <h2 style="font-size:38px; font-weight:700; text-align:center;">Отзывы</h2>
+    <div class="reviews-wrapper">
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="review-card"><div class="stars">★★★★★</div><p>За три месяца похудела на 12 кг. Аня — волшебница!</p><div class="author">— Екатерина</div></div>
+        <div class="review-card"><div class="stars">★★★★★</div><p>Начала любить спорт благодаря индивидуальному подходу. Спасибо!</p><div class="author">— Ольга</div></div>
+        <div class="review-card"><div class="stars">★★★★★</div><p>Очень внимательный тренер, всегда на связи, корректирует питание.</p><div class="author">— Мария</div></div>
+        <div class="review-card"><div class="stars">★★★★★</div><p>Результат виден уже через месяц. Рекомендую!</p><div class="author">— Ирина</div></div>
+      </div>
+    </div>
+    <div class="reviews-nav">
+      <button id="reviewsPrev">‹</button>
+      <button id="reviewsNext">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2 style="font-size:38px; font-weight:700; text-align:center;">Часто задаваемые вопросы</h2>
+    <div style="max-width:700px; margin:30px auto 0;">
+      <div class="faq-item"><div class="faq-question">Сколько длится тренировка? <span>▼</span></div><div class="faq-answer">Одна тренировка длится 60 минут. Включает разминку, основную часть и заминку с растяжкой.</div></div>
+      <div class="faq-item"><div class="faq-question">Нужно ли иметь спортивную форму? <span>▼</span></div><div class="faq-answer">Да, нужна удобная одежда для фитнеса и кроссовки. Всё остальное (коврики, утяжелители) предоставляется.</div></div>
+      <div class="faq-item"><div class="faq-question">Можно ли заниматься онлайн? <span>▼</span></div><div class="faq-answer">Да, я провожу онлайн-тренировки по видеосвязи. Это удобно для тех, кто не может приехать в зал.</div></div>
+      <div class="faq-item"><div class="faq-question">Как быстро будет виден результат? <span>▼</span></div><div class="faq-answer">Первые изменения заметны уже через 2–3 недели при регулярных занятиях и соблюдении плана питания.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ФОРМА -->
+<section id="booking">
+  <div class="container">
+    <h2 style="font-size:38px; font-weight:700; text-align:center;">Онлайн-запись</h2>
+    <div class="form-wrapper">
+      <form id="bookingForm">
+        <div class="form-group"><label for="name">Имя</label><input type="text" id="name" placeholder="Анна" required /></div>
+        <div class="form-group"><label for="phone">Телефон</label><input type="tel" id="phone" placeholder="+7 999 123-45-67" required /></div>
+        <div class="form-group"><label for="telegram">Telegram (необязательно)</label><input type="text" id="telegram" placeholder="@username" /></div>
+        <div class="form-group">
+          <label>Выберите пакет</label>
+          <div class="radio-group" id="packageGroup">
+            <label><input type="radio" name="package" value="single" checked /> Ознакомительная — 3 000 ₽</label>
+            <label><input type="radio" name="package" value="5" /> 5 тренировок — 10 000 ₽</label>
+            <label><input type="radio" name="package" value="10" /> 10 тренировок — 18 000 ₽</label>
+            <label><input type="radio" name="package" value="15" /> 15 тренировок — 27 000 ₽</label>
+            <label><input type="radio" name="package" value="20" /> 20 тренировок — 34 000 ₽</label>
+          </div>
+        </div>
+        <div class="form-group"><label for="comment">Комментарий</label><textarea id="comment" placeholder="Ваши цели, пожелания..."></textarea></div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="agree" required />
+          <label for="agree">Я согласен на обработку персональных данных</label>
+          <button type="button" class="policy-link" id="policyBtn">(Ознакомиться)</button>
+        </div>
+        <button type="submit" class="btn-submit">Записаться</button>
+      </form>
+      <div id="formMessage"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОДВАЛ -->
+<footer>
+  <div class="container">
+    <div class="footer-socials">
+      <a href="https://www.instagram.com/a777kkk?igsh=MWoxNTJlZjAxbTY4aQ==" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://t.me/kkkkkssss111" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a href="https://wa.me/79530979039" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a href="#">+7 999 123-45-67</a>
+      <a href="#">Адрес клуба</a>
+    </div>
+    <p>© 2026 Аня Зеленская — Фитнес-тренер и нутрициолог</p>
+  </div>
+</footer>
+
+<!-- ПЛАВАЮЩИЕ КНОПКИ -->
+<div class="floating-buttons">
+  <a href="https://t.me/kkkkkssss111" target="_blank" rel="noopener noreferrer" class="telegram" aria-label="Telegram">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 2.498-1.09 4.265-1.807 5.3-2.15 2.523-.835 3.048-.98 3.392-.98z"/>
+    </svg>
+  </a>
+  <a href="https://wa.me/79530979039?text=Здравствуйте%2C%20Анна%21%20Пишу%20по%20поводу%20записи%20на%20тренировку" target="_blank" rel="noopener noreferrer" class="whatsapp" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+</div>
+
+<!-- МОДАЛКИ -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-content">
+    <h2>🎉 До встречи на первой тренировке ❤️</h2>
+    <p>Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.</p>
+    <button class="btn-close" id="modalClose">Отлично!</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="policyModal">
+  <div class="modal-content" style="text-align:left;">
+    <h2 style="text-align:center;">Политика конфиденциальности</h2>
+    <p>Мы собираем только ваше имя, номер телефона и (по желанию) Telegram, чтобы связаться с вами для записи на тренировку. Ваши данные не передаются третьим лицам и используются исключительно для целей обратной связи и записи.</p>
+    <p>Вы можете отказаться от получения сообщений в любой момент, написав нам в Telegram или WhatsApp.</p>
+    <p style="text-align:center; margin-top:20px;"><button class="btn-close" id="policyClose">Понятно</button></p>
+  </div>
+</div>
+
+<canvas id="confetti-canvas"></canvas>
+
+<script>
+  // ===== ПРЕЛОАДЕР =====
+  setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 4000);
+
+  // ===== ТЁМНАЯ ТЕМА =====
+  const toggle = document.getElementById('themeToggle');
+  toggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+  });
+
+  // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+  // ===== СЧЁТЧИК ЦИФР =====
+  function animateCounters() {
+    document.querySelectorAll('.count-up').forEach(el => {
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const step = Math.ceil(target / 40);
+      const interval = setInterval(() => {
+        current += step;
+        if (current >= target) { current = target; clearInterval(interval); }
+        el.textContent = current;
+      }, 30);
+    });
+  }
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounters(); heroObserver.disconnect(); } });
+  }, { threshold:0.3 });
+  heroObserver.observe(document.querySelector('.hero-facts'));
+
+  // ===== ГАЛЕРЕЯ В ОБО МНЕ =====
+  (function() {
+    const slidesContainer = document.getElementById('aboutSlides');
+    const slides = slidesContainer.querySelectorAll('.slide');
+    const total = slides.length;
+    let current = 0;
+    const prevBtn = document.getElementById('galleryPrev');
+    const nextBtn = document.getElementById('galleryNext');
+    const dotsContainer = document.getElementById('galleryDots');
+
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('button');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.dataset.index = i;
+      dot.addEventListener('click', () => goTo(i));
+      dotsContainer.appendChild(dot);
+    }
+    const dots = dotsContainer.querySelectorAll('.dot');
+
+    function goTo(index) {
+      if (index < 0) index = total - 1;
+      if (index >= total) index = 0;
+      current = index;
+      slidesContainer.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    prevBtn.addEventListener('click', () => goTo(current - 1));
+    nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    let startX = 0, endX = 0;
+    const gallery = document.getElementById('aboutGallery');
+    gallery.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].screenX; });
+    gallery.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].screenX;
+      if (startX - endX > 50) goTo(current + 1);
+      else if (endX - startX > 50) goTo(current - 1);
+    });
+
+    let autoplay = setInterval(() => goTo(current + 1), 5000);
+    gallery.addEventListener('mouseenter', () => clearInterval(autoplay));
+    gallery.addEventListener('mouseleave', () => { autoplay = setInterval(() => goTo(current + 1), 5000); });
+  })();
+
+  // ===== СОВЕТЫ =====
+  const tips = [
+    "Начинайте утро со стакана воды — это запускает метаболизм и очищает организм.",
+    "Ешьте белок в каждом приёме пищи: курица, рыба, яйца, творог — строительный материал для мышц.",
+    "Креатин — одна из самых изученных добавок. Повышает силу и выносливость, безопасен.",
+    "Сон 7–9 часов критически важен для восстановления мышц и сжигания жира.",
+    "Не пропускайте завтрак — он задаёт энергетический тонус на весь день.",
+    "Пейте воду до, во время и после тренировки — мышцы на 70% состоят из воды.",
+    "Протеин после тренировки помогает восстановить мышцы и запустить рост.",
+    "Ешьте сложные углеводы (гречка, овсянка, бурый рис) за 1.5–2 часа до тренировки.",
+    "Растяжка после тренировки снижает крепатуру и улучшает гибкость.",
+    "Не бойтесь жиров — авокадо, орехи, оливковое масло полезны для гормонов.",
+    "Регулярность важнее интенсивности. Лучше 3 раза в неделю стабильно, чем 5 раз с перерывами.",
+    "Ведите дневник питания — это помогает осознанно подходить к рациону.",
+    "Кардио в умеренном темпе 3–4 раза в неделю укрепляет сердце и сжигает калории.",
+    "Разнообразьте тренировки — чередуйте силу, кардио и растяжку.",
+    "Не сравнивайте себя с другими. Ваш путь уникален, фокусируйтесь на своём прогрессе.",
+    "Витамин D влияет на настроение и иммунитет. Проверьте уровень, особенно зимой.",
+    "Магний помогает мышцам расслабляться и улучшает сон. Добавьте орехи и зелень.",
+    "После 20 лет мышцы начинают теряться. Силовые тренировки замедляют этот процесс.",
+    "Сочетайте протеин с углеводами после тренировки для максимального восстановления.",
+    "Слушайте своё тело: боль в суставах — сигнал остановиться, жжение в мышцах — норма.",
+    "Пить воду нужно не только во время тренировки, но и в течение дня — примерно 30 мл на 1 кг веса.",
+    "Уберите сахар из рациона — он вызывает скачки инсулина и тягу к еде.",
+    "Ешьте овощи при каждом приёме пищи — клетчатка улучшает пищеварение.",
+    "Спортивное питание (протеин, креатин, BCAA) — это помощь, а не замена нормальной еде.",
+    "Начинайте тренировку с разминки суставов — это снижает риск травм.",
+    "Планируйте тренировки заранее, как важные встречи. Это дисциплинирует.",
+    "Омега-3 (рыбий жир) снижает воспаление и поддерживает здоровье сердца.",
+    "Спите в полной темноте — мелатонин вырабатывается только в темноте.",
+    "Замените газировку и соки на воду с лимоном или чай без сахара.",
+    "Силовые тренировки увеличивают плотность костей — профилактика остеопороза.",
+    "Не делайте большие перерывы между приёмами пищи — ешьте каждые 3–4 часа.",
+    "Креатин нагружает мышцы водой, не бойтесь веса на весах — это плюс.",
+    "Делайте читмил раз в неделю — психологическая разгрузка ускоряет прогресс.",
+    "Следите за осанкой в повседневной жизни — это влияет на форму и здоровье спины.",
+    "Пейте кофе или чай за час до тренировки — это повышает энергию.",
+    "Сочетайте силовые и кардио в разные дни для лучшего жиросжигания.",
+    "Не забывайте про отдых между подходами — 60–90 секунд для больших групп мышц.",
+    "Снижайте стресс — кортизол мешает жиросжиганию и росту мышц.",
+    "Попробуйте медитацию или дыхательные упражнения — это улучшает настроение.",
+    "Протеиновый коктейль на ночь помогает мышцам восстанавливаться во время сна.",
+    "Следите за прогрессом не только по весам, но и по объёмам и фото.",
+    "Добавьте в рацион ферментированные продукты (кефир, квашеная капуста) — для кишечника.",
+    "Тренируйте мышцы кора — они поддерживают поясницу и улучшают осанку.",
+    "Не пропускайте заминку — 5–10 минут растяжки снижают риск травм.",
+    "Планируйте питание на день вперёд — чтобы не сорваться на вредную еду.",
+    "Поддерживайте водный баланс даже в выходные — организм работает 24/7.",
+    "Используйте интуитивное питание: ешьте, когда голодны, останавливайтесь, когда сыты.",
+    "Каждый день проходите не менее 8000 шагов — это базовая активность.",
+    "Включайте в программу упражнения с собственным весом — они безопасны и эффективны.",
+    "Помните: самый сложный шаг — начать. Вы уже на правильном пути!"
+  ];
+
+  let currentTipIndex = 0;
+  const tipText = document.getElementById('tipText');
+  const tipCounter = document.getElementById('tipCounter');
+  const prevTipBtn = document.getElementById('prevTip');
+  const nextTipBtn = document.getElementById('nextTip');
+  let tipInterval;
+
+  function showTip(index) {
+    tipText.classList.remove('show', 'fade');
+    setTimeout(() => {
+      tipText.textContent = tips[index];
+      tipText.classList.add('show');
+      tipCounter.textContent = `${index+1} / ${tips.length}`;
+    }, 50);
+  }
+
+  function nextTip() {
+    currentTipIndex = (currentTipIndex + 1) % tips.length;
+    showTip(currentTipIndex);
+    resetTipAutoplay();
+  }
+
+  function prevTip() {
+    currentTipIndex = (currentTipIndex - 1 + tips.length) % tips.length;
+    showTip(currentTipIndex);
+    resetTipAutoplay();
+  }
+
+  function resetTipAutoplay() {
+    clearInterval(tipInterval);
+    tipInterval = setInterval(nextTip, 30000);
+  }
+
+  prevTipBtn.addEventListener('click', prevTip);
+  nextTipBtn.addEventListener('click', nextTip);
+  tipInterval = setInterval(nextTip, 30000);
+
+  // ===== СЛАЙДЕР ОТЗЫВОВ =====
+  const track = document.getElementById('reviewsTrack');
+  let reviewIndex = 0;
+  const reviewCards = track.querySelectorAll('.review-card');
+  const totalReviews = reviewCards.length;
+  const visible = window.innerWidth < 600 ? 1 : 2;
+  const cardWidth = reviewCards[0].offsetWidth + 30;
+
+  document.getElementById('reviewsNext').addEventListener('click', () => {
+    if (reviewIndex < totalReviews - visible) reviewIndex++;
+    else reviewIndex = 0;
+    track.style.transform = `translateX(-${reviewIndex * cardWidth}px)`;
+  });
+  document.getElementById('reviewsPrev').addEventListener('click', () => {
+    if (reviewIndex > 0) reviewIndex--;
+    else reviewIndex = totalReviews - visible;
+    track.style.transform = `translateX(-${reviewIndex * cardWidth}px)`;
+  });
+
+  // ===== FAQ =====
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('active'));
+  });
+
+  // ===== КНОПКИ "ЧТО ПОЛУЧИШЬ ТЫ" (делегирование) =====
+  document.querySelector('.pricing-grid').addEventListener('click', function(e) {
+    const button = e.target.closest('[data-toggle-details]');
+    if (button) {
+      e.stopPropagation();
+      const card = button.closest('.pricing-card');
+      if (card) {
+        card.classList.toggle('expanded');
+      }
+    }
+  });
+
+  // ===== ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ =====
+  const policyModal = document.getElementById('policyModal');
+  const policyBtn = document.getElementById('policyBtn');
+  const policyClose = document.getElementById('policyClose');
+
+  policyBtn.addEventListener('click', () => policyModal.classList.add('active'));
+  policyClose.addEventListener('click', () => policyModal.classList.remove('active'));
+  policyModal.addEventListener('click', (e) => {
+    if (e.target === policyModal) policyModal.classList.remove('active');
+  });
+
+  // ===== ФОРМА + МОДАЛКА УСПЕХА + КОНФЕТТИ =====
+  const form = document.getElementById('bookingForm');
+  const successModal = document.getElementById('successModal');
+  const modalClose = document.getElementById('modalClose');
+  const canvas = document.getElementById('confetti-canvas');
+  const ctx = canvas.getContext('2d');
+  let confettiPieces = [];
+  let animationId = null;
+
+  function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  function launchConfetti() {
+    confettiPieces = [];
+    const colors = ['#34C759', '#ff3b30', '#ff9500', '#ffcc00', '#007aff', '#af52de', '#ff2d55'];
+    for (let i = 0; i < 150; i++) {
+      confettiPieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        w: 8 + Math.random() * 6,
+        h: 4 + Math.random() * 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vx: (Math.random() - 0.5) * 4,
+        vy: 2 + Math.random() * 4,
+        rot: Math.random() * 360,
+        rotSpeed: (Math.random() - 0.5) * 6,
+        opacity: 0.8 + Math.random() * 0.2,
+      });
+    }
+    if (animationId) cancelAnimationFrame(animationId);
+    drawConfetti();
+  }
+
+  function drawConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    let alive = false;
+    confettiPieces.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.rotSpeed;
+      if (p.y < canvas.height + 20) alive = true;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI / 180);
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.restore();
+    });
+    if (alive) animationId = requestAnimationFrame(drawConfetti);
+    else { ctx.clearRect(0, 0, canvas.width, canvas.height); animationId = null; }
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const agree = document.getElementById('agree').checked;
+    if (!name || !phone || !agree) {
+      document.getElementById('formMessage').innerHTML = '⚠️ Заполните все обязательные поля и примите согласие.';
+      document.getElementById('formMessage').style.color = '#ff3b30';
+      return;
+    }
+    successModal.classList.add('active');
+    launchConfetti();
+    document.getElementById('formMessage').innerHTML = '';
+    form.reset();
+  });
+
+  modalClose.addEventListener('click', () => {
+    successModal.classList.remove('active');
+    if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+  successModal.addEventListener('click', (e) => {
+    if (e.target === successModal) {
+      successModal.classList.remove('active');
+      if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+  });
+</script>
+
+</body>
+</html>
