@@ -513,7 +513,7 @@
         text-align: center;
       }
       .hero-image {
-        order: -1; /* Фото сверху! */
+        order: -1;
         margin-bottom: 20px;
       }
       .hero-text h1 { font-size:36px; }
@@ -532,8 +532,6 @@
       .pricing-card.popular { transform:scale(1); }
       .tip-wrapper .tip-text { font-size:20px; min-height:80px; }
       .tip-controls button { padding:10px 20px; font-size:14px; }
-
-      /* Отзывы – теперь не обрезаются */
       .reviews-track {
         gap: 16px;
       }
@@ -573,7 +571,7 @@
   </div>
 </header>
 
-<!-- HERO (главное фото справа, на телефоне – сверху) -->
+<!-- HERO -->
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-text">
@@ -593,7 +591,7 @@
   </div>
 </section>
 
-<!-- ОБО МНЕ (белый фон) -->
+<!-- ОБО МНЕ -->
 <section id="about">
   <div class="container about-grid">
     <div class="about-gallery" id="aboutGallery">
@@ -774,7 +772,7 @@
   </div>
 </section>
 
-<!-- ЭТАПЫ (аккордеон) -->
+<!-- ЭТАПЫ -->
 <section id="steps">
   <div class="container">
     <h2 style="font-size:38px; font-weight:700; text-align:center;">Как проходят тренировки</h2>
@@ -890,7 +888,7 @@
           <label for="agree">Я согласен на обработку персональных данных</label>
           <button type="button" class="policy-link" id="policyBtn">(Ознакомиться)</button>
         </div>
-        <button type="submit" class="btn-submit">Записаться</button>
+        <button type="submit" class="btn-submit" id="submitBtn">Записаться</button>
       </form>
       <div id="formMessage"></div>
     </div>
@@ -928,52 +926,22 @@
 <!-- =====================================================
      МОДАЛЬНОЕ ОКНО ПОСЛЕ УСПЕШНОЙ ОТПРАВКИ
 ====================================================== -->
-
 <div class="modal-overlay" id="successModal">
-
-    <div class="modal-content">
-
-        <div style="font-size:70px;margin-bottom:20px;">
-            🎉
-        </div>
-
-        <h2>
-
-            Спасибо за заявку!
-
-        </h2>
-
-        <p style="text-align:center;line-height:1.8;font-size:17px;">
-
-            💚
-
-            <br><br>
-
-            Я получила Вашу заявку.
-
-            <br><br>
-
-            Постараюсь связаться
-            с Вами в ближайшее время!
-
-            <br><br>
-
-            Хорошего Вам дня ❤️
-
-        </p>
-
-        <button
-            class="btn-close"
-            id="modalClose">
-
-            Отлично 💪
-
-        </button>
-
-    </div>
-
+  <div class="modal-content">
+    <div style="font-size:70px;margin-bottom:20px;">🎉</div>
+    <h2>Спасибо за заявку!</h2>
+    <p style="text-align:center;line-height:1.8;font-size:17px;">
+      💚<br><br>
+      Я получила Вашу заявку.<br><br>
+      Постараюсь связаться<br>
+      с Вами в ближайшее время!<br><br>
+      Хорошего Вам дня ❤️
+    </p>
+    <button class="btn-close" id="modalClose">Отлично 💪</button>
+  </div>
 </div>
 
+<!-- ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ -->
 <div class="modal-overlay" id="policyModal">
   <div class="modal-content" style="text-align:left;">
     <h2 style="text-align:center;">Политика конфиденциальности</h2>
@@ -1162,7 +1130,6 @@
   const reviewCards = track.querySelectorAll('.review-card');
   const totalReviews = reviewCards.length;
   const visible = window.innerWidth < 600 ? 1 : 2;
-  // Для мобильных делаем ширину 100%, поэтому слайдер прокручивает на полную ширину
   const cardWidth = window.innerWidth < 600 ? window.innerWidth - 48 : reviewCards[0].offsetWidth + 30;
 
   document.getElementById('reviewsNext').addEventListener('click', () => {
@@ -1211,16 +1178,24 @@
     if (e.target === policyModal) policyModal.classList.remove('active');
   });
 
-  // ===== ФОРМА + МОДАЛКА УСПЕХА + КОНФЕТТИ =====
+  // ======================================================
+  // ОТПРАВКА ФОРМЫ (ИСПРАВЛЕННАЯ)
+  // ======================================================
   const form = document.getElementById('bookingForm');
+  const submitBtn = document.getElementById('submitBtn');
   const successModal = document.getElementById('successModal');
   const modalClose = document.getElementById('modalClose');
+
+  // Конфетти
   const canvas = document.getElementById('confetti-canvas');
   const ctx = canvas.getContext('2d');
   let confettiPieces = [];
   let animationId = null;
 
-  function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
 
@@ -1258,125 +1233,75 @@
       ctx.rotate(p.rot * Math.PI / 180);
       ctx.globalAlpha = p.opacity;
       ctx.fillStyle = p.color;
-      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
       ctx.restore();
     });
-    if (alive) animationId = requestAnimationFrame(drawConfetti);
-    else { ctx.clearRect(0, 0, canvas.width, canvas.height); animationId = null; }
+    if (alive) {
+      animationId = requestAnimationFrame(drawConfetti);
+    } else {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      animationId = null;
+    }
   }
 
-  // ======================================================
-// ОТПРАВКА ФОРМЫ
-// ======================================================
-
-form.addEventListener("submit", function (e) {
-
-
-// ======================================================
-// ОТПРАВКА ФОРМЫ
-// ======================================================
-
-form.addEventListener("submit", async function (e) {
-
+  // Обработчик отправки
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // ---------- Получаем данные формы ----------
-
-    const name = document.getElementById("name").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const telegram = document.getElementById("telegram").value.trim();
-    const comment = document.getElementById("comment").value.trim();
-
-    const packageValue =
-        document.querySelector('input[name="package"]:checked').parentElement.innerText;
-
-    const agree = document.getElementById("agree").checked;
-
-    const submitButton = form.querySelector(".btn-submit");
-
-    // ---------- Проверка ----------
-
-    if (!name || !phone || !agree) {
-
-        formMessage.textContent =
-            "⚠️ Пожалуйста, заполните обязательные поля.";
-
-        formMessage.style.color = "#ff3b30";
-
-        return;
-    }
-
-    // ---------- Анимация ----------
-
-    submitButton.disabled = true;
-    submitButton.textContent = "⏳ Отправляем заявку...";
-
-    try {
-
-        // ===========================================
-        // Здесь позже будет Telegram
-        // await sendToTelegram(...)
-        // ===========================================
-
-        await new Promise(resolve => setTimeout(resolve, 900));
-
-        successModal.classList.add("active");
-        launchConfetti();
-
-        form.reset();
-
-        formMessage.textContent = "";
-
-        submitButton.textContent = "✅ Заявка отправлена!";
-
-    } finally {
-
-        setTimeout(() => {
-
-            submitButton.disabled = false;
-            submitButton.textContent = "Записаться";
-
-        }, 2500);
-
-    }
-
-});
-
-        setTimeout(() => {
-
-            submitButton.disabled = false;
-
-            submitButton.innerHTML = "Записаться";
-
-        }, 2500);
-
-    }, 900);
-
-});
-    e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const agree = document.getElementById('agree').checked;
+    const messageEl = document.getElementById('formMessage');
+
     if (!name || !phone || !agree) {
-      document.getElementById('formMessage').innerHTML = '⚠️ Заполните все обязательные поля и примите согласие.';
-      document.getElementById('formMessage').style.color = '#ff3b30';
+      messageEl.innerHTML = '⚠️ Заполните все обязательные поля и примите согласие.';
+      messageEl.style.color = '#ff3b30';
       return;
     }
-    successModal.classList.add('active');
-    launchConfetti();
-    document.getElementById('formMessage').innerHTML = '';
-    form.reset();
+
+    // Шаг 1: меняем текст кнопки
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '⏳ Отправляем заявку...';
+
+    // Шаг 2: через секунду показываем успех
+    setTimeout(() => {
+      submitBtn.innerHTML = '✅ Заявка отправлена!';
+
+      // Показываем модалку и конфетти
+      successModal.classList.add('active');
+      launchConfetti();
+
+      // Очищаем сообщение
+      messageEl.innerHTML = '';
+
+      // Сбрасываем форму
+      form.reset();
+
+      // Возвращаем кнопку в исходное состояние через 2.5 сек
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Записаться';
+      }, 2500);
+    }, 900);
   });
 
+  // Закрытие модалки
   modalClose.addEventListener('click', () => {
     successModal.classList.remove('active');
-    if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
   });
+
   successModal.addEventListener('click', (e) => {
     if (e.target === successModal) {
       successModal.classList.remove('active');
-      if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
   });
