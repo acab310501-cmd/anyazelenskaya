@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
   <style>
+    /* ===== БАЗА ===== */
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body {
@@ -47,6 +48,7 @@
     .container { max-width:1200px; margin:0 auto; padding:0 24px; }
     :root { --green:#34C759; --gray:#8e8e93; --light-bg:#f8f8fc; }
 
+    /* ===== ШАПКА ===== */
     .theme-toggle {
       background: none; border: none; font-size: 24px; cursor: pointer;
       transition: transform 0.3s; padding: 0 8px;
@@ -74,6 +76,7 @@
     nav a:hover { color:var(--green); }
     nav a:hover::after { width:100%; }
 
+    /* ===== ПРЕЛОАДЕР ===== */
     #preloader {
       position:fixed; inset:0; z-index:9999;
       background:#000; display:flex; align-items:center; justify-content:center;
@@ -91,6 +94,7 @@
       100% { opacity:0; transform:scale(1.05); }
     }
 
+    /* ===== HERO ===== */
     .hero { min-height:90vh; display:flex; align-items:center; padding:60px 0; }
     .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; width:100%; }
     .hero-text h1 { font-size:72px; font-weight:800; letter-spacing:-2px; line-height:1.05; margin-bottom:8px; }
@@ -112,6 +116,7 @@
       box-shadow:0 20px 40px rgba(0,0,0,0.06);
     }
 
+    /* ===== ОБО МНЕ ===== */
     #about { padding:80px 0; background:#fff; transition:background 0.3s; }
     body.dark #about { background:#0a0a0b; }
     .about-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:center; }
@@ -196,6 +201,7 @@
     body.dark .about-gallery .dot { background: rgba(255,255,255,0.3); }
     body.dark .about-gallery .dot.active { background: #34C759; }
 
+    /* ===== СЕРТИФИКАТЫ ===== */
     #certificates { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #certificates { background:#121213; }
     .cert-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:30px; margin-top:30px; }
@@ -209,6 +215,7 @@
     .certificate-card h3 { font-size:18px; font-weight:700; }
     .certificate-card p { font-size:14px; color:var(--gray); }
 
+    /* ===== СОВЕТЫ ===== */
     #tips { padding:80px 0; background:#fff; transition:background 0.3s; }
     body.dark #tips { background:#0a0a0b; }
     .tip-wrapper {
@@ -239,6 +246,7 @@
     .tip-controls .secondary:hover { background:var(--green); color:#fff; }
     .tip-counter { font-size:14px; color:var(--gray); margin-top:16px; }
 
+    /* ===== ПРЕИМУЩЕСТВА ===== */
     #benefits { padding:80px 0; }
     .benefits-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:30px; margin-top:20px; }
     .benefit-card {
@@ -251,6 +259,7 @@
     .benefit-card h3 { font-size:20px; font-weight:700; margin-bottom:6px; }
     .benefit-card p { font-size:15px; color:var(--gray); }
 
+    /* ===== ЦЕНЫ ===== */
     #pricing { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #pricing { background:#121213; }
     .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:24px; margin-top:30px; }
@@ -327,6 +336,7 @@
       padding-top: 16px;
     }
 
+    /* ===== ЭТАПЫ ===== */
     #steps { padding:80px 0; }
     .steps-list { display:flex; flex-direction:column; gap:16px; max-width:700px; margin:30px auto 0; }
     .step-item {
@@ -386,6 +396,7 @@
     .step-desc strong { color:#1c1c1e; }
     body.dark .step-desc strong { color:#f5f5f7; }
 
+    /* ===== ОТЗЫВЫ ===== */
     #reviews { padding:80px 0; overflow:hidden; }
     .reviews-track { display:flex; gap:30px; transition:transform 0.5s ease; }
     .review-card {
@@ -405,6 +416,7 @@
     .reviews-nav button { background:none; border:1px solid #d1d1d6; border-radius:50%; width:48px; height:48px; font-size:22px; cursor:pointer; transition:all 0.2s; }
     .reviews-nav button:hover { border-color:var(--green); color:var(--green); }
 
+    /* ===== FAQ ===== */
     #faq { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #faq { background:#121213; }
     .faq-item { border-bottom:1px solid rgba(0,0,0,0.06); padding:16px 0; cursor:pointer; }
@@ -415,6 +427,7 @@
     .faq-item .faq-question span { transition:transform 0.3s; display:inline-block; }
     .faq-item.active .faq-question span { transform:rotate(180deg); }
 
+    /* ===== ФОРМА ===== */
     #booking { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #booking { background:#121213; }
     .form-wrapper { max-width:700px; margin:0 auto; background:#fff; border-radius:40px; padding:48px; box-shadow:0 12px 48px rgba(0,0,0,0.04); }
@@ -453,23 +466,56 @@
     .btn-submit:hover { background:#2db84e; }
     #formMessage { margin-top:20px; text-align:center; font-weight:600; }
 
+    /* ===== МОДАЛКИ ===== */
     .modal-overlay {
       position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5);
       backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center;
     }
     .modal-overlay.active { display:flex; }
+
     .modal-content {
       background:#fff; border-radius:40px; padding:48px 40px; max-width:520px; width:90%;
       text-align:center; position:relative; box-shadow:0 32px 64px rgba(0,0,0,0.2);
       max-height:90vh; overflow-y:auto;
     }
     body.dark .modal-content { background:#1c1c1e; }
+
     .modal-content h2 { font-size:28px; margin-bottom:8px; }
-    .modal-content p { color:var(--gray); margin-bottom:20px; text-align:left; font-size:15px; line-height:1.7; }
-    .modal-content .btn-close { background:var(--green); color:#fff; border:none; padding:12px 40px; border-radius:60px; font-weight:600; cursor:pointer; transition:background 0.2s; }
+    .modal-content .btn-close {
+      background:var(--green); color:#fff; border:none;
+      padding:12px 40px; border-radius:60px; font-weight:600;
+      cursor:pointer; transition:background 0.2s;
+    }
     .modal-content .btn-close:hover { background:#2db84e; }
+
+    /* Убираем инлайн-стили из модалки — теперь они здесь */
+    .success-icon {
+      font-size: 70px;
+      margin-bottom: 20px;
+    }
+    .success-text {
+      text-align: center;
+      line-height: 1.8;
+      font-size: 17px;
+    }
+    .success-text strong {
+      color: #1c1c1e;
+    }
+    body.dark .success-text strong {
+      color: #f5f5f7;
+    }
+
+    .policy-text {
+      text-align: left;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+
     #confetti-canvas { position:fixed; inset:0; pointer-events:none; z-index:10000; }
 
+    /* ===== ПЛАВАЮЩИЕ КНОПКИ ===== */
     .floating-buttons {
       position:fixed; bottom:24px; right:24px; display:flex; flex-direction:column; gap:12px; z-index:999;
     }
@@ -484,6 +530,7 @@
     .floating-buttons a.whatsapp { background: #25D366; }
     .floating-buttons a svg { width:28px; height:28px; fill:#fff; display:block; }
 
+    /* ===== ПОДВАЛ ===== */
     footer { padding:40px 0; border-top:1px solid rgba(0,0,0,0.04); text-align:center; color:var(--gray); font-size:14px; }
     body.dark footer { border-top-color:rgba(255,255,255,0.05); }
     .footer-socials { display:flex; justify-content:center; gap:24px; margin-bottom:16px; font-size:18px; flex-wrap:wrap; }
@@ -491,6 +538,7 @@
     body.dark .footer-socials a { color:#f5f5f7; }
     .footer-socials a:hover { color:var(--green); }
 
+    /* ===== АНИМАЦИИ ===== */
     .animate-on-scroll { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
     .animate-on-scroll.visible { opacity:1; transform:translateY(0); }
 
@@ -923,54 +971,65 @@
   </a>
 </div>
 
-<!-- =====================================================
-     МОДАЛЬНОЕ ОКНО ПОСЛЕ УСПЕШНОЙ ОТПРАВКИ
-====================================================== -->
+<!-- ===== МОДАЛКА УСПЕХА ===== -->
 <div class="modal-overlay" id="successModal">
   <div class="modal-content">
-    <div style="font-size:70px;margin-bottom:20px;">🎉</div>
+    <div class="success-icon">🎉</div>
     <h2>Спасибо за заявку!</h2>
-    <p style="text-align:center;line-height:1.8;font-size:17px;">
+    <div class="success-text">
       💚<br><br>
       Я получила Вашу заявку.<br><br>
       Постараюсь связаться<br>
       с Вами в ближайшее время!<br><br>
       Хорошего Вам дня ❤️
-    </p>
+    </div>
     <button class="btn-close" id="modalClose">Отлично 💪</button>
   </div>
 </div>
 
-<!-- ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ -->
+<!-- ===== МОДАЛКА ПОЛИТИКИ ===== -->
 <div class="modal-overlay" id="policyModal">
   <div class="modal-content" style="text-align:left;">
     <h2 style="text-align:center;">Политика конфиденциальности</h2>
-    <p>Мы собираем только ваше имя, номер телефона и (по желанию) Telegram, чтобы связаться с вами для записи на тренировку. Ваши данные не передаются третьим лицам и используются исключительно для целей обратной связи и записи.</p>
-    <p>Вы можете отказаться от получения сообщений в любой момент, написав нам в Telegram или WhatsApp.</p>
-    <p style="text-align:center; margin-top:20px;"><button class="btn-close" id="policyClose">Понятно</button></p>
+    <div class="policy-text">
+      Мы собираем только ваше имя, номер телефона и (по желанию) Telegram, чтобы связаться с вами для записи на тренировку. Ваши данные не передаются третьим лицам и используются исключительно для целей обратной связи и записи.
+      <br><br>
+      Вы можете отказаться от получения сообщений в любой момент, написав нам в Telegram или WhatsApp.
+    </div>
+    <p style="text-align:center;"><button class="btn-close" id="policyClose">Понятно</button></p>
   </div>
 </div>
 
 <canvas id="confetti-canvas"></canvas>
 
 <script>
-  // ===== ПРЕЛОАДЕР =====
+  // ============================================================
+  // НАСТРОЙКИ TELEGRAM БОТА (ЗАМЕНИТЕ НА СВОИ ЗНАЧЕНИЯ)
+  // ============================================================
+  const BOT_TOKEN = 'ВАШ_ТОКЕН';      // Токен от @BotFather
+  const CHAT_ID = 'ВАШ_CHAT_ID';      // Ваш chat_id
+
+  // ============================================================
+  // ОСНОВНОЙ СКРИПТ
+  // ============================================================
+
+  // ---- ПРЕЛОАДЕР ----
   setTimeout(() => document.getElementById('preloader').classList.add('hidden'), 4000);
 
-  // ===== ТЁМНАЯ ТЕМА =====
+  // ---- ТЁМНАЯ ТЕМА ----
   const toggle = document.getElementById('themeToggle');
   toggle.addEventListener('click', () => {
     document.body.classList.toggle('dark');
     toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
   });
 
-  // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
+  // ---- АНИМАЦИЯ ПРИ СКРОЛЛЕ ----
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold:0.15 });
   document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
 
-  // ===== СЧЁТЧИК ЦИФР =====
+  // ---- СЧЁТЧИК ЦИФР ----
   function animateCounters() {
     document.querySelectorAll('.count-up').forEach(el => {
       const target = parseInt(el.dataset.target);
@@ -988,7 +1047,7 @@
   }, { threshold:0.3 });
   heroObserver.observe(document.querySelector('.hero-facts'));
 
-  // ===== ГАЛЕРЕЯ В ОБО МНЕ =====
+  // ---- ГАЛЕРЕЯ ----
   (function() {
     const slidesContainer = document.getElementById('aboutSlides');
     const slides = slidesContainer.querySelectorAll('.slide');
@@ -1033,7 +1092,7 @@
     gallery.addEventListener('mouseleave', () => { autoplay = setInterval(() => goTo(current + 1), 5000); });
   })();
 
-  // ===== СОВЕТЫ =====
+  // ---- СОВЕТЫ ----
   const tips = [
     "Начинайте утро со стакана воды — это запускает метаболизм и очищает организм.",
     "Ешьте белок в каждом приёме пищи: курица, рыба, яйца, творог — строительный материал для мышц.",
@@ -1124,7 +1183,7 @@
   nextTipBtn.addEventListener('click', nextTip);
   tipInterval = setInterval(nextTip, 30000);
 
-  // ===== СЛАЙДЕР ОТЗЫВОВ =====
+  // ---- СЛАЙДЕР ОТЗЫВОВ ----
   const track = document.getElementById('reviewsTrack');
   let reviewIndex = 0;
   const reviewCards = track.querySelectorAll('.review-card');
@@ -1143,12 +1202,12 @@
     track.style.transform = `translateX(-${reviewIndex * cardWidth}px)`;
   });
 
-  // ===== FAQ =====
+  // ---- FAQ ----
   document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => item.classList.toggle('active'));
   });
 
-  // ===== АККОРДЕОН для этапов =====
+  // ---- АККОРДЕОН для этапов ----
   document.querySelectorAll('.step-item').forEach(item => {
     const header = item.querySelector('.step-header');
     header.addEventListener('click', () => {
@@ -1159,7 +1218,7 @@
     });
   });
 
-  // ===== TOGGLE для карточек цен (на мобильных) =====
+  // ---- TOGGLE для карточек цен ----
   document.querySelectorAll('.pricing-card[data-toggle]').forEach(card => {
     card.addEventListener('click', function(e) {
       if (e.target.closest('.btn-outline')) return;
@@ -1167,7 +1226,7 @@
     });
   });
 
-  // ===== ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ =====
+  // ---- ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ ----
   const policyModal = document.getElementById('policyModal');
   const policyBtn = document.getElementById('policyBtn');
   const policyClose = document.getElementById('policyClose');
@@ -1178,15 +1237,16 @@
     if (e.target === policyModal) policyModal.classList.remove('active');
   });
 
-  // ======================================================
-  // ОТПРАВКА ФОРМЫ (ИСПРАВЛЕННАЯ)
-  // ======================================================
+  // ============================================================
+  // ФОРМА + TELEGRAM БОТ
+  // ============================================================
   const form = document.getElementById('bookingForm');
   const submitBtn = document.getElementById('submitBtn');
   const successModal = document.getElementById('successModal');
   const modalClose = document.getElementById('modalClose');
+  const messageEl = document.getElementById('formMessage');
 
-  // Конфетти
+  // ---- КОНФЕТТИ ----
   const canvas = document.getElementById('confetti-canvas');
   const ctx = canvas.getContext('2d');
   let confettiPieces = [];
@@ -1244,14 +1304,53 @@
     }
   }
 
-  // Обработчик отправки
+  // ---- ОТПРАВКА В TELEGRAM ----
+  function sendToTelegram(data) {
+    const text = `
+🔥 <b>Новая заявка</b>
+
+👤 <b>Имя:</b> ${data.name}
+📱 <b>Телефон:</b> ${data.phone}
+💬 <b>Telegram:</b> ${data.telegram || '—'}
+📦 <b>Пакет:</b> ${data.package}
+📝 <b>Комментарий:</b> ${data.comment || '—'}
+⏰ <b>Время:</b> ${new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}
+    `.trim();
+
+    return fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: CHAT_ID,
+        text: text,
+        parse_mode: 'HTML',
+      }),
+    });
+  }
+
+  // ---- ОБРАБОТЧИК ФОРМЫ ----
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
+    const telegram = document.getElementById('telegram').value.trim();
     const agree = document.getElementById('agree').checked;
-    const messageEl = document.getElementById('formMessage');
+    const comment = document.getElementById('comment').value.trim();
+
+    // Определяем выбранный пакет
+    const packageRadio = document.querySelector('input[name="package"]:checked');
+    let packageLabel = 'Не выбран';
+    if (packageRadio) {
+      const labels = {
+        'single': 'Ознакомительная — 3 000 ₽',
+        '5': '5 тренировок — 10 000 ₽',
+        '10': '10 тренировок — 18 000 ₽',
+        '15': '15 тренировок — 27 000 ₽',
+        '20': '20 тренировок — 34 000 ₽'
+      };
+      packageLabel = labels[packageRadio.value] || packageRadio.value;
+    }
 
     if (!name || !phone || !agree) {
       messageEl.innerHTML = '⚠️ Заполните все обязательные поля и примите согласие.';
@@ -1259,50 +1358,55 @@
       return;
     }
 
-    // Шаг 1: меняем текст кнопки
+    // Блокируем кнопку
     submitBtn.disabled = true;
     submitBtn.innerHTML = '⏳ Отправляем заявку...';
+    messageEl.innerHTML = '';
 
-    // Шаг 2: через секунду показываем успех
-    setTimeout(() => {
-      submitBtn.innerHTML = '✅ Заявка отправлена!';
+    const formData = { name, phone, telegram, package: packageLabel, comment };
 
-      // Показываем модалку и конфетти
-      successModal.classList.add('active');
-      launchConfetti();
-
-      // Очищаем сообщение
-      messageEl.innerHTML = '';
-
-      // Сбрасываем форму
-      form.reset();
-
-      // Возвращаем кнопку в исходное состояние через 2.5 сек
-      setTimeout(() => {
+    // Отправляем в Telegram
+    sendToTelegram(formData)
+      .then(response => {
+        if (!response.ok) throw new Error('Ошибка отправки в Telegram');
+        submitBtn.innerHTML = '✅ Заявка отправлена!';
+        successModal.classList.add('active');
+        launchConfetti();
+        form.reset();
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Записаться';
+        }, 2500);
+      })
+      .catch(err => {
+        console.error(err);
+        messageEl.innerHTML = '⚠️ Произошла ошибка при отправке заявки. Попробуйте позже.';
+        messageEl.style.color = '#ff3b30';
         submitBtn.disabled = false;
         submitBtn.innerHTML = 'Записаться';
-      }, 2500);
-    }, 900);
+      });
   });
 
-  // Закрытие модалки
-  modalClose.addEventListener('click', () => {
+  // ---- ЗАКРЫТИЕ МОДАЛКИ ----
+  function closeModal() {
     successModal.classList.remove('active');
     if (animationId) {
       cancelAnimationFrame(animationId);
       animationId = null;
     }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  successModal.addEventListener('click', (e) => {
+    if (e.target === successModal) closeModal();
   });
 
-  successModal.addEventListener('click', (e) => {
-    if (e.target === successModal) {
-      successModal.classList.remove('active');
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-        animationId = null;
-      }
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+  // ---- ЗАКРЫТИЕ ПО ESC ----
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal();
+      policyModal.classList.remove('active');
     }
   });
 </script>
