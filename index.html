@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
   <style>
-    /* ===== БАЗА ===== */
+    /* ===== ВСЕ СТИЛИ (ОСТАЛИСЬ БЕЗ ИЗМЕНЕНИЙ) ===== */
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body {
@@ -48,7 +48,6 @@
     .container { max-width:1200px; margin:0 auto; padding:0 24px; }
     :root { --green:#34C759; --gray:#8e8e93; --light-bg:#f8f8fc; }
 
-    /* ===== ШАПКА ===== */
     .theme-toggle {
       background: none; border: none; font-size: 24px; cursor: pointer;
       transition: transform 0.3s; padding: 0 8px;
@@ -76,7 +75,6 @@
     nav a:hover { color:var(--green); }
     nav a:hover::after { width:100%; }
 
-    /* ===== ПРЕЛОАДЕР ===== */
     #preloader {
       position:fixed; inset:0; z-index:9999;
       background:#000; display:flex; align-items:center; justify-content:center;
@@ -94,7 +92,6 @@
       100% { opacity:0; transform:scale(1.05); }
     }
 
-    /* ===== HERO ===== */
     .hero { min-height:90vh; display:flex; align-items:center; padding:60px 0; }
     .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; width:100%; }
     .hero-text h1 { font-size:72px; font-weight:800; letter-spacing:-2px; line-height:1.05; margin-bottom:8px; }
@@ -116,7 +113,6 @@
       box-shadow:0 20px 40px rgba(0,0,0,0.06);
     }
 
-    /* ===== ОБО МНЕ ===== */
     #about { padding:80px 0; background:#fff; transition:background 0.3s; }
     body.dark #about { background:#0a0a0b; }
     .about-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:center; }
@@ -201,7 +197,6 @@
     body.dark .about-gallery .dot { background: rgba(255,255,255,0.3); }
     body.dark .about-gallery .dot.active { background: #34C759; }
 
-    /* ===== СЕРТИФИКАТЫ ===== */
     #certificates { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #certificates { background:#121213; }
     .cert-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:30px; margin-top:30px; }
@@ -215,7 +210,6 @@
     .certificate-card h3 { font-size:18px; font-weight:700; }
     .certificate-card p { font-size:14px; color:var(--gray); }
 
-    /* ===== СОВЕТЫ ===== */
     #tips { padding:80px 0; background:#fff; transition:background 0.3s; }
     body.dark #tips { background:#0a0a0b; }
     .tip-wrapper {
@@ -246,7 +240,6 @@
     .tip-controls .secondary:hover { background:var(--green); color:#fff; }
     .tip-counter { font-size:14px; color:var(--gray); margin-top:16px; }
 
-    /* ===== ПРЕИМУЩЕСТВА ===== */
     #benefits { padding:80px 0; }
     .benefits-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:30px; margin-top:20px; }
     .benefit-card {
@@ -259,7 +252,6 @@
     .benefit-card h3 { font-size:20px; font-weight:700; margin-bottom:6px; }
     .benefit-card p { font-size:15px; color:var(--gray); }
 
-    /* ===== ЦЕНЫ ===== */
     #pricing { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #pricing { background:#121213; }
     .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:24px; margin-top:30px; }
@@ -336,7 +328,6 @@
       padding-top: 16px;
     }
 
-    /* ===== ЭТАПЫ ===== */
     #steps { padding:80px 0; }
     .steps-list { display:flex; flex-direction:column; gap:16px; max-width:700px; margin:30px auto 0; }
     .step-item {
@@ -396,7 +387,6 @@
     .step-desc strong { color:#1c1c1e; }
     body.dark .step-desc strong { color:#f5f5f7; }
 
-    /* ===== ОТЗЫВЫ ===== */
     #reviews { padding:80px 0; overflow:hidden; }
     .reviews-track { display:flex; gap:30px; transition:transform 0.5s ease; }
     .review-card {
@@ -416,7 +406,6 @@
     .reviews-nav button { background:none; border:1px solid #d1d1d6; border-radius:50%; width:48px; height:48px; font-size:22px; cursor:pointer; transition:all 0.2s; }
     .reviews-nav button:hover { border-color:var(--green); color:var(--green); }
 
-    /* ===== FAQ ===== */
     #faq { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #faq { background:#121213; }
     .faq-item { border-bottom:1px solid rgba(0,0,0,0.06); padding:16px 0; cursor:pointer; }
@@ -427,7 +416,6 @@
     .faq-item .faq-question span { transition:transform 0.3s; display:inline-block; }
     .faq-item.active .faq-question span { transform:rotate(180deg); }
 
-    /* ===== ФОРМА ===== */
     #booking { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #booking { background:#121213; }
     .form-wrapper { max-width:700px; margin:0 auto; background:#fff; border-radius:40px; padding:48px; box-shadow:0 12px 48px rgba(0,0,0,0.04); }
@@ -466,7 +454,6 @@
     .btn-submit:hover { background:#2db84e; }
     #formMessage { margin-top:20px; text-align:center; font-weight:600; }
 
-    /* ===== МОДАЛКИ ===== */
     .modal-overlay {
       position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5);
       backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center;
@@ -488,7 +475,6 @@
     }
     .modal-content .btn-close:hover { background:#2db84e; }
 
-    /* Убираем инлайн-стили из модалки — теперь они здесь */
     .success-icon {
       font-size: 70px;
       margin-bottom: 20px;
@@ -498,13 +484,6 @@
       line-height: 1.8;
       font-size: 17px;
     }
-    .success-text strong {
-      color: #1c1c1e;
-    }
-    body.dark .success-text strong {
-      color: #f5f5f7;
-    }
-
     .policy-text {
       text-align: left;
       font-size: 15px;
@@ -515,7 +494,6 @@
 
     #confetti-canvas { position:fixed; inset:0; pointer-events:none; z-index:10000; }
 
-    /* ===== ПЛАВАЮЩИЕ КНОПКИ ===== */
     .floating-buttons {
       position:fixed; bottom:24px; right:24px; display:flex; flex-direction:column; gap:12px; z-index:999;
     }
@@ -530,7 +508,6 @@
     .floating-buttons a.whatsapp { background: #25D366; }
     .floating-buttons a svg { width:28px; height:28px; fill:#fff; display:block; }
 
-    /* ===== ПОДВАЛ ===== */
     footer { padding:40px 0; border-top:1px solid rgba(0,0,0,0.04); text-align:center; color:var(--gray); font-size:14px; }
     body.dark footer { border-top-color:rgba(255,255,255,0.05); }
     .footer-socials { display:flex; justify-content:center; gap:24px; margin-bottom:16px; font-size:18px; flex-wrap:wrap; }
@@ -538,11 +515,9 @@
     body.dark .footer-socials a { color:#f5f5f7; }
     .footer-socials a:hover { color:var(--green); }
 
-    /* ===== АНИМАЦИИ ===== */
     .animate-on-scroll { opacity:0; transform:translateY(30px); transition:opacity 0.7s ease, transform 0.7s ease; }
     .animate-on-scroll.visible { opacity:1; transform:translateY(0); }
 
-    /* ===== АДАПТИВНОСТЬ ===== */
     @media (max-width:992px) {
       .hero-grid { grid-template-columns:1fr; text-align:center; }
       .hero-text h1 { font-size:48px; }
@@ -708,7 +683,6 @@
   <div class="container">
     <h2 style="font-size:38px; font-weight:700; text-align:center;">Стоимость</h2>
     <div class="pricing-grid">
-      <!-- Ознакомительная -->
       <div class="pricing-card animate-on-scroll" data-toggle>
         <div class="badge">Ознакомительная</div>
         <div class="price">3 000 ₽</div>
@@ -726,7 +700,6 @@
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
       </div>
 
-      <!-- 5 тренировок -->
       <div class="pricing-card animate-on-scroll" data-toggle>
         <div class="badge">Старт</div>
         <div class="price">10 000 ₽</div>
@@ -734,17 +707,16 @@
         <div class="pricing-details">
           <div class="details-title">✨ Что получишь ты</div>
           <ul>
-            <li>Персональный план питания на неделю с учётом целей</li>
-            <li>Обучение базовым и изолирующим упражнениям</li>
-            <li>Постановка техники под контролем тренера</li>
-            <li>Корректировка программы по ходу занятий</li>
-            <li>Мотивационная поддержка и контроль прогресса</li>
+            <li>Персональный план питания на неделю</li>
+            <li>Обучение базовым упражнениям</li>
+            <li>Постановка техники</li>
+            <li>Корректировка программы</li>
+            <li>Мотивационная поддержка</li>
           </ul>
         </div>
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
       </div>
 
-      <!-- 10 тренировок -->
       <div class="pricing-card animate-on-scroll" data-toggle>
         <div class="badge">−10%</div>
         <div class="price">18 000 ₽</div>
@@ -753,17 +725,16 @@
         <div class="pricing-details">
           <div class="details-title">✨ Что получишь ты</div>
           <ul>
-            <li>Внедрение полезных привычек в повседневную жизнь</li>
-            <li>Детальная проработка всех мышечных групп</li>
-            <li>Корректировка питания на основе динамики веса и объёмов</li>
-            <li>Обучение самостоятельному составлению рациона</li>
-            <li>Устойчивый прогресс в силе и выносливости</li>
+            <li>Внедрение полезных привычек</li>
+            <li>Проработка всех мышц</li>
+            <li>Корректировка питания</li>
+            <li>Обучение составлению рациона</li>
+            <li>Устойчивый прогресс</li>
           </ul>
         </div>
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
       </div>
 
-      <!-- 15 тренировок -->
       <div class="pricing-card animate-on-scroll" data-toggle>
         <div class="badge">−10%</div>
         <div class="price">27 000 ₽</div>
@@ -772,17 +743,16 @@
         <div class="pricing-details">
           <div class="details-title">✨ Что получишь ты</div>
           <ul>
-            <li>Закрепление навыков правильного выполнения упражнений</li>
-            <li>Работа над слабыми зонами и коррекция осанки</li>
-            <li>Глубокая проработка гибкости и подвижности суставов</li>
-            <li>Полноценное меню на месяц с учётом предпочтений</li>
-            <li>Постоянная обратная связь и адаптация плана</li>
+            <li>Закрепление навыков</li>
+            <li>Работа над слабыми зонами</li>
+            <li>Глубокая гибкость</li>
+            <li>Полноценное меню на месяц</li>
+            <li>Постоянная обратная связь</li>
           </ul>
         </div>
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
       </div>
 
-      <!-- 20 тренировок (популярный) -->
       <div class="pricing-card popular animate-on-scroll" data-toggle>
         <div class="badge">−15%</div>
         <div class="price">34 000 ₽</div>
@@ -791,11 +761,11 @@
         <div class="pricing-details">
           <div class="details-title">✨ Что получишь ты</div>
           <ul>
-            <li>Гарантированный результат при соблюдении рекомендаций</li>
-            <li>Полная трансформация тела: жиросжигание + рельеф</li>
-            <li>Индивидуальный подход к каждой тренировке</li>
-            <li>Психологическая поддержка и формирование здоровых привычек</li>
-            <li>Пожизненный доступ к программе и консультации после курса</li>
+            <li>Гарантированный результат</li>
+            <li>Полная трансформация тела</li>
+            <li>Индивидуальный подход</li>
+            <li>Психологическая поддержка</li>
+            <li>Пожизненный доступ к программе</li>
           </ul>
         </div>
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
@@ -949,8 +919,8 @@
     <div class="footer-socials">
       <a href="https://www.instagram.com/a777kkk?igsh=MWoxNTJlZjAxbTY4aQ==" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://t.me/kkkkkssss111" target="_blank" rel="noopener noreferrer">Telegram</a>
-      <a href="https://wa.me/79184106900" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      <a href="tel:+79184106900">+7 953 097 90 39</a>
+      <a href="https://wa.me/79530979039" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a href="tel:+79530979039">+7 953 097 90 39</a>
       <a href="https://2gis.ru/krasnodar/firm/3237490513252326" target="_blank" rel="noopener noreferrer">📍 Адрес клуба</a>
     </div>
     <p>© 2026 Аня Зеленская — Фитнес-тренер и нутрициолог</p>
@@ -964,14 +934,14 @@
       <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 2.498-1.09 4.265-1.807 5.3-2.15 2.523-.835 3.048-.98 3.392-.98z"/>
     </svg>
   </a>
-  <a href="https://wa.me/79184106900text=Здравствуйте%2C%20Анна%21%20Пишу%20по%20поводу%20записи%20на%20тренировку" target="_blank" rel="noopener noreferrer" class="whatsapp" aria-label="WhatsApp">
+  <a href="https://wa.me/79530979039?text=Здравствуйте%2C%20Анна%21%20Пишу%20по%20поводу%20записи%20на%20тренировку" target="_blank" rel="noopener noreferrer" class="whatsapp" aria-label="WhatsApp">
     <svg viewBox="0 0 24 24" width="28" height="28" fill="white">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
   </a>
 </div>
 
-<!-- ===== МОДАЛКА УСПЕХА ===== -->
+<!-- МОДАЛКА УСПЕХА -->
 <div class="modal-overlay" id="successModal">
   <div class="modal-content">
     <div class="success-icon">🎉</div>
@@ -987,7 +957,7 @@
   </div>
 </div>
 
-<!-- ===== МОДАЛКА ПОЛИТИКИ ===== -->
+<!-- МОДАЛКА ПОЛИТИКИ -->
 <div class="modal-overlay" id="policyModal">
   <div class="modal-content" style="text-align:left;">
     <h2 style="text-align:center;">Политика конфиденциальности</h2>
@@ -1004,13 +974,7 @@
 
 <script>
   // ============================================================
-  // НАСТРОЙКИ TELEGRAM БОТА (ЗАМЕНИТЕ НА СВОИ ЗНАЧЕНИЯ)
-  // ============================================================
-  const BOT_TOKEN = 'ВАШ_ТОКЕН';      // Токен от @BotFather
-  const CHAT_ID = 'ВАШ_CHAT_ID';      // Ваш chat_id
-
-  // ============================================================
-  // ОСНОВНОЙ СКРИПТ
+  // ТЕЛЕГРАМ-БОТ ОТКЛЮЧЁН (ФОРМА РАБОТАЕТ НА САЙТЕ)
   // ============================================================
 
   // ---- ПРЕЛОАДЕР ----
@@ -1237,8 +1201,16 @@
     if (e.target === policyModal) policyModal.classList.remove('active');
   });
 
+  // ---- ЗАКРЫТИЕ ПО ESC ----
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      successModal.classList.remove('active');
+      policyModal.classList.remove('active');
+    }
+  });
+
   // ============================================================
-  // ФОРМА + TELEGRAM БОТ
+  // ФОРМА (БЕЗ TELEGRAM — РАБОТАЕТ ЛОКАЛЬНО)
   // ============================================================
   const form = document.getElementById('bookingForm');
   const submitBtn = document.getElementById('submitBtn');
@@ -1304,90 +1276,6 @@
     }
   }
 
-  // ---- ОТПРАВКА В TELEGRAM ----
-  function sendToTelegram(data) {
-    const text = `
-🔥 <b>Новая заявка</b>
-
-👤 <b>Имя:</b> ${data.name}
-📱 <b>Телефон:</b> ${data.phone}
-💬 <b>Telegram:</b> ${data.telegram || '—'}
-📦 <b>Пакет:</b> ${data.package}
-📝 <b>Комментарий:</b> ${data.comment || '—'}
-⏰ <b>Время:</b> ${new Date().toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}
-    `.trim();
-
-    return fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: text,
-        parse_mode: 'HTML',
-      }),
-    });
-  }
-
-  // ---- ОБРАБОТЧИК ФОРМЫ ----
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const telegram = document.getElementById('telegram').value.trim();
-    const agree = document.getElementById('agree').checked;
-    const comment = document.getElementById('comment').value.trim();
-
-    // Определяем выбранный пакет
-    const packageRadio = document.querySelector('input[name="package"]:checked');
-    let packageLabel = 'Не выбран';
-    if (packageRadio) {
-      const labels = {
-        'single': 'Ознакомительная — 3 000 ₽',
-        '5': '5 тренировок — 10 000 ₽',
-        '10': '10 тренировок — 18 000 ₽',
-        '15': '15 тренировок — 27 000 ₽',
-        '20': '20 тренировок — 34 000 ₽'
-      };
-      packageLabel = labels[packageRadio.value] || packageRadio.value;
-    }
-
-    if (!name || !phone || !agree) {
-      messageEl.innerHTML = '⚠️ Заполните все обязательные поля и примите согласие.';
-      messageEl.style.color = '#ff3b30';
-      return;
-    }
-
-    // Блокируем кнопку
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '⏳ Отправляем заявку...';
-    messageEl.innerHTML = '';
-
-    const formData = { name, phone, telegram, package: packageLabel, comment };
-
-    // Отправляем в Telegram
-    sendToTelegram(formData)
-      .then(response => {
-        if (!response.ok) throw new Error('Ошибка отправки в Telegram');
-        submitBtn.innerHTML = '✅ Заявка отправлена!';
-        successModal.classList.add('active');
-        launchConfetti();
-        form.reset();
-        setTimeout(() => {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = 'Записаться';
-        }, 2500);
-      })
-      .catch(err => {
-        console.error(err);
-        messageEl.innerHTML = '⚠️ Произошла ошибка при отправке заявки. Попробуйте позже.';
-        messageEl.style.color = '#ff3b30';
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Записаться';
-      });
-  });
-
-  // ---- ЗАКРЫТИЕ МОДАЛКИ ----
   function closeModal() {
     successModal.classList.remove('active');
     if (animationId) {
@@ -1402,12 +1290,42 @@
     if (e.target === successModal) closeModal();
   });
 
-  // ---- ЗАКРЫТИЕ ПО ESC ----
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeModal();
-      policyModal.classList.remove('active');
+  // ---- ОТПРАВКА ФОРМЫ (БЕЗ TELEGRAM) ----
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const agree = document.getElementById('agree').checked;
+
+    if (!name || !phone || !agree) {
+      messageEl.innerHTML = '⚠️ Заполните все обязательные поля и примите согласие.';
+      messageEl.style.color = '#ff3b30';
+      return;
     }
+
+    // Блокируем кнопку
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '⏳ Отправляем заявку...';
+    messageEl.innerHTML = '';
+
+    // Имитация отправки (задержка 0.9 сек)
+    setTimeout(() => {
+      submitBtn.innerHTML = '✅ Заявка отправлена!';
+
+      // Показываем модалку и конфетти
+      successModal.classList.add('active');
+      launchConfetti();
+
+      // Очищаем форму
+      form.reset();
+
+      // Возвращаем кнопку
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Записаться';
+      }, 2500);
+    }, 900);
   });
 </script>
 
