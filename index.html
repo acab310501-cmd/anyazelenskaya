@@ -25,8 +25,7 @@
     body.dark .review-card,
     body.dark .step-item,
     body.dark .pricing-card,
-    body.dark .certificate-card,
-    body.dark .tip-card {
+    body.dark .certificate-card {
       background: rgba(255,255,255,0.05);
       border-color: rgba(255,255,255,0.08);
       color: #f5f5f7;
@@ -255,6 +254,7 @@
     .benefit-card h3 { font-size:20px; font-weight:700; margin-bottom:6px; }
     .benefit-card p { font-size:15px; color:var(--gray); }
 
+    /* ===== ЦЕНЫ (hover/касание) ===== */
     #pricing { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #pricing { background:#121213; }
     .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px,1fr)); gap:24px; margin-top:30px; }
@@ -294,6 +294,7 @@
     }
     .btn-outline:hover { background:var(--green); color:#fff; }
 
+    /* Блок с деталями */
     .pricing-details {
       max-height: 0;
       overflow: hidden;
@@ -308,6 +309,12 @@
       padding: 0 4px;
     }
     body.dark .pricing-details { color: #ccc; border-top-color: rgba(255,255,255,0.05); }
+    .pricing-details .details-title {
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
     .pricing-details ul {
       list-style: none;
       padding: 0;
@@ -320,6 +327,7 @@
       margin-bottom: 2px;
     }
 
+    /* Показываем при наведении (десктоп) и при добавлении класса .expanded (мобильные/касание) */
     .pricing-card:hover .pricing-details,
     .pricing-card.expanded .pricing-details {
       max-height: 400px;
@@ -328,33 +336,67 @@
       padding-top: 16px;
     }
 
-    .btn-flip {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 8px 20px;
-      border-radius: 40px;
-      background: var(--green);
-      color: #fff;
-      font-weight: 600;
-      font-size: 14px;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-      box-shadow: 0 4px 12px rgba(52,199,89,0.25);
-    }
-    .btn-flip:hover { background:#2db84e; transform:scale(1.03); }
-
+    /* ===== ЭТАПЫ (аккордеон) ===== */
     #steps { padding:80px 0; }
-    .steps-list { display:flex; flex-direction:column; gap:16px; max-width:600px; margin:30px auto 0; }
+    .steps-list { display:flex; flex-direction:column; gap:16px; max-width:700px; margin:30px auto 0; }
     .step-item {
-      display:flex; align-items:center; gap:24px; padding:16px 24px;
-      background:#fff; border-radius:60px; box-shadow:0 4px 16px rgba(0,0,0,0.03);
-      border:1px solid rgba(0,0,0,0.02); font-size:18px; font-weight:500;
+      background:#fff;
+      border-radius:60px;
+      box-shadow:0 4px 16px rgba(0,0,0,0.03);
+      border:1px solid rgba(0,0,0,0.02);
+      overflow:hidden;
+      transition:border-color 0.3s;
+      cursor:pointer;
     }
     body.dark .step-item { background:#1c1c1e; border-color:#2c2c2e; }
-    .step-item .num { background:var(--green); color:#fff; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; flex-shrink:0; }
-    .step-item .arrow { margin-left:auto; color:var(--gray); }
+    .step-item .step-header {
+      display:flex;
+      align-items:center;
+      gap:24px;
+      padding:16px 24px;
+      font-size:18px;
+      font-weight:500;
+      transition:background 0.2s;
+    }
+    .step-item .step-header:hover { background:rgba(0,0,0,0.02); }
+    body.dark .step-item .step-header:hover { background:rgba(255,255,255,0.02); }
+    .step-item .num {
+      background:var(--green);
+      color:#fff;
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+      flex-shrink:0;
+    }
+    .step-item .arrow {
+      margin-left:auto;
+      color:var(--gray);
+      transition:transform 0.3s;
+      font-size:20px;
+    }
+    .step-item.active .arrow { transform:rotate(180deg); }
+    .step-item .step-desc {
+      max-height:0;
+      overflow:hidden;
+      transition:max-height 0.5s ease, padding 0.3s;
+      padding:0 24px;
+      color:var(--gray);
+      font-size:15px;
+      line-height:1.6;
+    }
+    body.dark .step-item .step-desc { color:#bbb; }
+    .step-item.active .step-desc {
+      max-height:300px;
+      padding:0 24px 20px;
+    }
+    .step-desc strong { color:#1c1c1e; }
+    body.dark .step-desc strong { color:#f5f5f7; }
 
+    /* ===== ОТЗЫВЫ ===== */
     #reviews { padding:80px 0; overflow:hidden; }
     .reviews-track { display:flex; gap:30px; transition:transform 0.5s ease; }
     .review-card {
@@ -373,6 +415,7 @@
     .reviews-nav button { background:none; border:1px solid #d1d1d6; border-radius:50%; width:48px; height:48px; font-size:22px; cursor:pointer; transition:all 0.2s; }
     .reviews-nav button:hover { border-color:var(--green); color:var(--green); }
 
+    /* ===== FAQ ===== */
     #faq { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #faq { background:#121213; }
     .faq-item { border-bottom:1px solid rgba(0,0,0,0.06); padding:16px 0; cursor:pointer; }
@@ -383,6 +426,7 @@
     .faq-item .faq-question span { transition:transform 0.3s; display:inline-block; }
     .faq-item.active .faq-question span { transform:rotate(180deg); }
 
+    /* ===== ФОРМА ===== */
     #booking { padding:80px 0; background:var(--light-bg); transition:background 0.3s; }
     body.dark #booking { background:#121213; }
     .form-wrapper { max-width:700px; margin:0 auto; background:#fff; border-radius:40px; padding:48px; box-shadow:0 12px 48px rgba(0,0,0,0.04); }
@@ -421,6 +465,7 @@
     .btn-submit:hover { background:#2db84e; }
     #formMessage { margin-top:20px; text-align:center; font-weight:600; }
 
+    /* ===== МОДАЛКИ ===== */
     .modal-overlay {
       position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.5);
       backdrop-filter:blur(6px); display:none; align-items:center; justify-content:center;
@@ -438,6 +483,7 @@
     .modal-content .btn-close:hover { background:#2db84e; }
     #confetti-canvas { position:fixed; inset:0; pointer-events:none; z-index:10000; }
 
+    /* ===== ПЛАВАЮЩИЕ КНОПКИ ===== */
     .floating-buttons {
       position:fixed; bottom:24px; right:24px; display:flex; flex-direction:column; gap:12px; z-index:999;
     }
@@ -452,6 +498,7 @@
     .floating-buttons a.whatsapp { background: #25D366; }
     .floating-buttons a svg { width:28px; height:28px; fill:#fff; display:block; }
 
+    /* ===== ПОДВАЛ ===== */
     footer { padding:40px 0; border-top:1px solid rgba(0,0,0,0.04); text-align:center; color:var(--gray); font-size:14px; }
     body.dark footer { border-top-color:rgba(255,255,255,0.05); }
     .footer-socials { display:flex; justify-content:center; gap:24px; margin-bottom:16px; font-size:18px; flex-wrap:wrap; }
@@ -479,7 +526,8 @@
       .header-inner { flex-direction:column; gap:8px; }
       nav { gap:14px; font-size:14px; justify-content:center; }
       .hero-facts { flex-direction:column; gap:12px; }
-      .step-item { font-size:15px; padding:12px 16px; }
+      .step-item .step-header { font-size:16px; padding:14px 18px; gap:16px; }
+      .step-item .num { width:34px; height:34px; font-size:14px; }
       .floating-buttons { bottom:16px; right:16px; }
       .floating-buttons a { width:48px; height:48px; }
       .floating-buttons a svg { width:24px; height:24px; }
@@ -528,6 +576,7 @@
       </div>
     </div>
     <div class="hero-image">
+      <!-- Вставьте своё фото вместо заглушки -->
       <div class="placeholder">АЗ</div>
     </div>
   </div>
@@ -538,10 +587,11 @@
   <div class="container about-grid">
     <div class="about-gallery" id="aboutGallery">
       <div class="slides" id="aboutSlides">
-        <div class="slide"><img src="images/about-1.jpg" alt="Аня в зале" style="width:100%; height:100%; object-fit:cover;" /></div>
-        <div class="slide"><img src="images/about-2.jpg" alt="Аня на шпагате" style="width:100%; height:100%; object-fit:cover;" /></div>
-        <div class="slide"><img src="images/about-3.jpg" alt="Аня с клиентом" style="width:100%; height:100%; object-fit:cover;" /></div>
-        <div class="slide"><img src="images/about-4.jpg" alt="Аня в движении" style="width:100%; height:100%; object-fit:cover;" /></div>
+        <!-- Замените src на свои изображения (или используйте заглушки) -->
+        <div class="slide"><img src="images/about-1.jpg" alt="Аня в зале" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.textContent='Фото 1';" /></div>
+        <div class="slide"><img src="images/about-2.jpg" alt="Аня на шпагате" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.textContent='Фото 2';" /></div>
+        <div class="slide"><img src="images/about-3.jpg" alt="Аня с клиентом" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.textContent='Фото 3';" /></div>
+        <div class="slide"><img src="images/about-4.jpg" alt="Аня в движении" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.textContent='Фото 4';" /></div>
       </div>
       <button class="gallery-btn prev" id="galleryPrev">‹</button>
       <button class="gallery-btn next" id="galleryNext">›</button>
@@ -601,11 +651,12 @@
     <h2 style="font-size:38px; font-weight:700; text-align:center;">Стоимость</h2>
     <div class="pricing-grid">
       <!-- Ознакомительная -->
-      <div class="pricing-card animate-on-scroll">
+      <div class="pricing-card animate-on-scroll" data-toggle>
         <div class="badge">Ознакомительная</div>
         <div class="price">3 000 ₽</div>
         <div style="font-size:14px;color:var(--gray);">1 тренировка</div>
         <div class="pricing-details">
+          <div class="details-title">✨ Что получишь ты</div>
           <ul>
             <li>Знакомство с тренажёрами и базовыми упражнениями</li>
             <li>Составление персонального плана питания на день</li>
@@ -614,16 +665,16 @@
             <li>Рекомендации по режиму и восстановлению</li>
           </ul>
         </div>
-        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
       </div>
 
       <!-- 5 тренировок -->
-      <div class="pricing-card animate-on-scroll">
+      <div class="pricing-card animate-on-scroll" data-toggle>
         <div class="badge">Старт</div>
         <div class="price">10 000 ₽</div>
         <div style="font-size:14px;color:var(--gray);">5 тренировок (2000 ₽/занятие)</div>
         <div class="pricing-details">
+          <div class="details-title">✨ Что получишь ты</div>
           <ul>
             <li>Персональный план питания на неделю с учётом целей</li>
             <li>Обучение базовым и изолирующим упражнениям</li>
@@ -632,17 +683,17 @@
             <li>Мотивационная поддержка и контроль прогресса</li>
           </ul>
         </div>
-        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
       </div>
 
       <!-- 10 тренировок -->
-      <div class="pricing-card animate-on-scroll">
+      <div class="pricing-card animate-on-scroll" data-toggle>
         <div class="badge">−10%</div>
         <div class="price">18 000 ₽</div>
         <div style="font-size:14px;color:var(--gray);">10 тренировок</div>
         <div><span class="old-price">20 000 ₽</span> <span class="saving">экономия 2 000 ₽</span></div>
         <div class="pricing-details">
+          <div class="details-title">✨ Что получишь ты</div>
           <ul>
             <li>Внедрение полезных привычек в повседневную жизнь</li>
             <li>Детальная проработка всех мышечных групп</li>
@@ -651,17 +702,17 @@
             <li>Устойчивый прогресс в силе и выносливости</li>
           </ul>
         </div>
-        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
       </div>
 
       <!-- 15 тренировок -->
-      <div class="pricing-card animate-on-scroll">
+      <div class="pricing-card animate-on-scroll" data-toggle>
         <div class="badge">−10%</div>
         <div class="price">27 000 ₽</div>
         <div style="font-size:14px;color:var(--gray);">15 тренировок</div>
         <div><span class="old-price">30 000 ₽</span> <span class="saving">экономия 3 000 ₽</span></div>
         <div class="pricing-details">
+          <div class="details-title">✨ Что получишь ты</div>
           <ul>
             <li>Закрепление навыков правильного выполнения упражнений</li>
             <li>Работа над слабыми зонами и коррекция осанки</li>
@@ -670,17 +721,17 @@
             <li>Постоянная обратная связь и адаптация плана</li>
           </ul>
         </div>
-        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
       </div>
 
       <!-- 20 тренировок (популярный) -->
-      <div class="pricing-card popular animate-on-scroll">
+      <div class="pricing-card popular animate-on-scroll" data-toggle>
         <div class="badge">−15%</div>
         <div class="price">34 000 ₽</div>
         <div style="font-size:14px;color:var(--gray);">20 тренировок</div>
         <div><span class="old-price">40 000 ₽</span> <span class="saving">экономия 6 000 ₽</span></div>
         <div class="pricing-details">
+          <div class="details-title">✨ Что получишь ты</div>
           <ul>
             <li>Гарантированный результат при соблюдении рекомендаций</li>
             <li>Полная трансформация тела: жиросжигание + рельеф</li>
@@ -689,7 +740,6 @@
             <li>Пожизненный доступ к программе и консультации после курса</li>
           </ul>
         </div>
-        <button class="btn-flip" data-toggle-details>Что получишь ты ✨</button>
         <a href="#booking" class="btn-outline" style="display:block;margin-top:8px;">Записаться</a>
       </div>
     </div>
@@ -712,16 +762,61 @@
   </div>
 </section>
 
-<!-- ЭТАПЫ -->
+<!-- ЭТАПЫ (аккордеон) -->
 <section id="steps">
   <div class="container">
     <h2 style="font-size:38px; font-weight:700; text-align:center;">Как проходят тренировки</h2>
     <div class="steps-list">
-      <div class="step-item animate-on-scroll"><span class="num">1</span> Диагностика <span class="arrow">↓</span></div>
-      <div class="step-item animate-on-scroll"><span class="num">2</span> Постановка цели <span class="arrow">↓</span></div>
-      <div class="step-item animate-on-scroll"><span class="num">3</span> План питания <span class="arrow">↓</span></div>
-      <div class="step-item animate-on-scroll"><span class="num">4</span> Тренировочная программа <span class="arrow">↓</span></div>
-      <div class="step-item animate-on-scroll"><span class="num">5</span> Контроль результата</div>
+      <div class="step-item animate-on-scroll">
+        <div class="step-header">
+          <span class="num">1</span>
+          <span>Диагностика</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="step-desc">
+          <p><strong>Знакомство с клиентом</strong> — выявление целей, потребностей и ограничений. Проводится оценка текущего уровня физической подготовки: тесты на силу, гибкость, выносливость. Анализируется техника выполнения базовых упражнений, осанка и подвижность суставов. По итогам составляется <strong>персональный профиль</strong>, который станет основой для всей дальнейшей работы.</p>
+        </div>
+      </div>
+      <div class="step-item animate-on-scroll">
+        <div class="step-header">
+          <span class="num">2</span>
+          <span>Постановка цели</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="step-desc">
+          <p>Совместно определяем <strong>конкретные, измеримые цели</strong>: похудение, набор мышечной массы, улучшение рельефа, повышение силы, общее оздоровление. Разрабатываем <strong>стратегию достижения</strong> с учётом вашего образа жизни, графика и возможностей. Согласовываем сроки и промежуточные результаты, чтобы вы видели прогресс на каждом этапе.</p>
+        </div>
+      </div>
+      <div class="step-item animate-on-scroll">
+        <div class="step-header">
+          <span class="num">3</span>
+          <span>План питания</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="step-desc">
+          <p>Составляем <strong>сбалансированный рацион</strong> на основе ваших целей, вкусовых предпочтений и образа жизни. Рассчитываем оптимальную калорийность и соотношение БЖУ. Даём рекомендации по водному режиму и приёму добавок (при необходимости). Вы получаете готовое меню или гибкие схемы питания, которые легко вписать в повседневность.</p>
+        </div>
+      </div>
+      <div class="step-item animate-on-scroll">
+        <div class="step-header">
+          <span class="num">4</span>
+          <span>Тренировочная программа</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="step-desc">
+          <p>Создаём <strong>индивидуальную программу упражнений</strong>, которая соответствует вашим целям и уровню подготовки. Программа включает силовые тренировки (с отягощениями и весом тела), кардио-нагрузки, упражнения на гибкость и координацию. Прописываем прогрессию нагрузок, чтобы вы постоянно развивались. Программа корректируется по мере вашего прогресса.</p>
+        </div>
+      </div>
+      <div class="step-item animate-on-scroll">
+        <div class="step-header">
+          <span class="num">5</span>
+          <span>Контроль результата</span>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="step-desc">
+          <p>Регулярно проводим <strong>замеры</strong> (вес, объёмы, процент жира), делаем фотофиксацию для наглядной оценки изменений. Анализируем прогресс, выявляем зоны роста. Вы получаете <strong>обратную связь</strong> и рекомендации по дальнейшей корректировке программы. Так мы гарантируем достижение результата в оговоренные сроки.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1033,16 +1128,25 @@
     item.addEventListener('click', () => item.classList.toggle('active'));
   });
 
-  // ===== КНОПКИ "ЧТО ПОЛУЧИШЬ ТЫ" (делегирование) =====
-  document.querySelector('.pricing-grid').addEventListener('click', function(e) {
-    const button = e.target.closest('[data-toggle-details]');
-    if (button) {
-      e.stopPropagation();
-      const card = button.closest('.pricing-card');
-      if (card) {
-        card.classList.toggle('expanded');
-      }
-    }
+  // ===== АККОРДЕОН для этапов =====
+  document.querySelectorAll('.step-item').forEach(item => {
+    const header = item.querySelector('.step-header');
+    header.addEventListener('click', () => {
+      // Закрываем все остальные
+      document.querySelectorAll('.step-item').forEach(other => {
+        if (other !== item) other.classList.remove('active');
+      });
+      item.classList.toggle('active');
+    });
+  });
+
+  // ===== TOGGLE для карточек цен (на мобильных) =====
+  document.querySelectorAll('.pricing-card[data-toggle]').forEach(card => {
+    card.addEventListener('click', function(e) {
+      // Если кликнули по кнопке "Записаться", не переключаем
+      if (e.target.closest('.btn-outline')) return;
+      this.classList.toggle('expanded');
+    });
   });
 
   // ===== ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ =====
