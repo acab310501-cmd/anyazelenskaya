@@ -925,13 +925,53 @@
   </a>
 </div>
 
-<!-- МОДАЛКИ -->
+<!-- =====================================================
+     МОДАЛЬНОЕ ОКНО ПОСЛЕ УСПЕШНОЙ ОТПРАВКИ
+====================================================== -->
+
 <div class="modal-overlay" id="successModal">
-  <div class="modal-content">
-    <h2>🎉 До встречи на первой тренировке ❤️</h2>
-    <p>Ваша заявка успешно отправлена. Я свяжусь с вами в ближайшее время.</p>
-    <button class="btn-close" id="modalClose">Отлично!</button>
-  </div>
+
+    <div class="modal-content">
+
+        <div style="font-size:70px;margin-bottom:20px;">
+            🎉
+        </div>
+
+        <h2>
+
+            Спасибо за заявку!
+
+        </h2>
+
+        <p style="text-align:center;line-height:1.8;font-size:17px;">
+
+            💚
+
+            <br><br>
+
+            Я получила Вашу заявку.
+
+            <br><br>
+
+            Постараюсь связаться
+            с Вами в ближайшее время!
+
+            <br><br>
+
+            Хорошего Вам дня ❤️
+
+        </p>
+
+        <button
+            class="btn-close"
+            id="modalClose">
+
+            Отлично 💪
+
+        </button>
+
+    </div>
+
 </div>
 
 <div class="modal-overlay" id="policyModal">
@@ -1225,7 +1265,83 @@
     else { ctx.clearRect(0, 0, canvas.width, canvas.height); animationId = null; }
   }
 
-  form.addEventListener('submit', function(e) {
+  // ======================================================
+// ОТПРАВКА ФОРМЫ
+// ======================================================
+
+form.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    // ------------------------------------------
+    // Получаем данные формы
+    // ------------------------------------------
+
+    const name = document
+        .getElementById("name")
+        .value
+        .trim();
+
+    const phone = document
+        .getElementById("phone")
+        .value
+        .trim();
+
+    const agree = document
+        .getElementById("agree")
+        .checked;
+
+    const submitButton = form.querySelector(".btn-submit");
+
+    // ------------------------------------------
+    // Проверка заполнения формы
+    // ------------------------------------------
+
+    if (!name || !phone || !agree) {
+
+        document.getElementById("formMessage").innerHTML =
+            "⚠️ Пожалуйста, заполните обязательные поля и примите согласие на обработку данных.";
+
+        document.getElementById("formMessage").style.color =
+            "#ff3b30";
+
+        return;
+
+    }
+
+    // ------------------------------------------
+    // КРАСИВАЯ АНИМАЦИЯ КНОПКИ
+    // ------------------------------------------
+
+    submitButton.disabled = true;
+
+    submitButton.innerHTML = "⏳ Отправляем заявку...";
+
+    setTimeout(() => {
+
+        submitButton.innerHTML = "✅ Заявка отправлена!";
+
+        successModal.classList.add("active");
+
+        launchConfetti();
+
+        document.getElementById("formMessage").innerHTML = "";
+
+        form.reset();
+
+        // Возвращаем кнопку в исходное состояние
+
+        setTimeout(() => {
+
+            submitButton.disabled = false;
+
+            submitButton.innerHTML = "Записаться";
+
+        }, 2500);
+
+    }, 900);
+
+});
     e.preventDefault();
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
